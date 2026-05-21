@@ -1,32 +1,4 @@
 # 5. Hafta Raporu: Linux Temelleri
-
-## İçindekiler
-
-- [Giriş](#giriş)
-- [Linux Nedir ve Neden Önemlidir?](#linux-nedir-ve-neden-önemlidir)
-- [Terminal ve Komut Satırı Mantığı](#terminal-ve-komut-satırı-mantığı)
-- [Temel Terminal Komutları](#temel-terminal-komutları)
-  - [ls Komutu](#ls-komutu)
-  - [cd Komutu](#cd-komutu)
-  - [grep Komutu](#grep-komutu)
-  - [mkdir Komutu](#mkdir-komutu)
-  - [chmod Komutu](#chmod-komutu)
-  - [top Komutu](#top-komutu)
-- [Paket Yönetimi](#paket-yönetimi)
-  - [apt Paket Yöneticisi](#apt-paket-yöneticisi)
-  - [pacman Paket Yöneticisi](#pacman-paket-yöneticisi)
-  - [dnf Paket Yöneticisi](#dnf-paket-yöneticisi)
-- [Dosya İzinleri](#dosya-izinleri)
-- [Servis Yönetimi](#servis-yönetimi)
-  - [systemctl Komutu](#systemctl-komutu)
-- [Linux Dosya Sistemi Mantığı](#linux-dosya-sistemi-mantığı)
-- [Linux Temellerinin Yazılım Geliştirme Açısından Önemi](#linux-temellerinin-yazılım-geliştirme-açısından-önemi)
-- [Örnek Uygulama Senaryoları](#örnek-uygulama-senaryoları)
-- [Sonuç](#sonuç)
-- [Kazanım](#kazanım)
-
----
-
 ## Giriş
 
 Bu haftaki çalışmanın konusu **Linux temelleri**dir. Yazılım geliştirme sürecinde yalnızca programlama dillerini bilmek yeterli değildir. Bir yazılımcının kullandığı işletim sistemi altyapısını, komut satırı araçlarını, dosya izin mantığını, paket kurulum süreçlerini ve servis yönetimini de anlaması gerekir. Bu nedenle Linux temelleri, hem sistem bilgisi hem de günlük geliştirme süreçleri açısından oldukça önemlidir.
