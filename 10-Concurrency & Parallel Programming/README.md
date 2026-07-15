@@ -1605,5 +1605,3 @@ gibi sorunlar ortaya çıkabilir.
 Bu nedenle başarılı bir concurrent yazılımın amacı yalnızca çok sayıda thread çalıştırmak değildir. Asıl amaç şudur:
 
 > Ortak kaynakları güvenli biçimde yönetmek, görevleri doğru şekilde koordine etmek ve donanım kaynaklarını gereksiz maliyet oluşturmadan verimli kullanmak.
-
-Bu konuyu doğru öğrendiğinde çok çekirdekli sistemlerde hem **güvenli**, hem **hızlı**, hem de **ölçeklenebilir** yazılımlar geliştirebilirsin.
