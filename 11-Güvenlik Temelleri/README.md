@@ -11,9 +11,6 @@
 - [3. Authentication — Kimlik Doğrulama](#3-authentication--kimlik-doğrulama)
   - [3.1. Authentication Nedir?](#31-authentication-nedir)
   - [3.2. Authentication Faktörleri](#32-authentication-faktörleri)
-    - [Bilinen bir şey](#bilinen-bir-şey)
-    - [Sahip olunan bir şey](#sahip-olunan-bir-şey)
-    - [Kullanıcıya ait bir özellik](#kullanıcıya-ait-bir-özellik)
   - [3.3. MFA — Multi-Factor Authentication](#33-mfa--multi-factor-authentication)
   - [3.4. Güvenli Authentication Akışı](#34-güvenli-authentication-akışı)
   - [3.5. Parolalar Nasıl Saklanmalıdır?](#35-parolalar-nasıl-saklanmalıdır)
@@ -226,9 +223,7 @@ Bilgi güvenliği çoğunlukla üç temel hedef üzerinden değerlendirilir:
 
 ## 2.1. Confidentiality — Gizlilik
 
-Bilgilere yalnızca yetkili kişilerin erişebilmesidir.
-
-Örneğin:
+Bilgilere yalnızca yetkili kişilerin erişebilmesidir. Örneğin:
 
 * Bir kullanıcının özel mesajlarını başka kullanıcıların görememesi
 * Müşteri bilgilerinin yetkisiz çalışanlara gösterilmemesi
@@ -241,9 +236,7 @@ Gizlilik ihlali gerçekleştiğinde hassas bilgiler yetkisiz kişiler tarafında
 
 ## 2.2. Integrity — Bütünlük
 
-Verilerin yetkisiz kişiler tarafından değiştirilememesidir.
-
-Örneğin:
+Verilerin yetkisiz kişiler tarafından değiştirilememesidir. Örneğin:
 
 * Bir kullanıcının banka hesabındaki bakiyeyi değiştirememesi
 * Sipariş tutarının tarayıcı üzerinden manipüle edilememesi
@@ -256,9 +249,7 @@ JWT imzası gibi mekanizmalar, verinin değiştirildiğinin tespit edilmesine ya
 
 ## 2.3. Availability — Erişilebilirlik
 
-Sistemin ihtiyaç duyulduğu zaman kullanılabilir olmasıdır.
-
-Örneğin:
+Sistemin ihtiyaç duyulduğu zaman kullanılabilir olmasıdır. Örneğin:
 
 * Sunucunun aşırı istekler nedeniyle hizmet veremez hâle gelmemesi
 * Veri tabanı bağlantılarının kontrolsüz tüketilmemesi
@@ -273,17 +264,11 @@ Güvenlik yalnızca veri çalınmasını önlemek değildir. Sistemin kullanıla
 
 ## 3.1. Authentication Nedir?
 
-Authentication, bir kullanıcının veya sistemin iddia ettiği kimliğe gerçekten sahip olup olmadığının doğrulanmasıdır.
-
-Türkçede genellikle **kimlik doğrulama** olarak ifade edilir.
-
-Authentication şu soruya cevap verir:
+Authentication, bir kullanıcının veya sistemin iddia ettiği kimliğe gerçekten sahip olup olmadığının doğrulanmasıdır. Türkçede genellikle **kimlik doğrulama** olarak ifade edilir. Authentication şu soruya cevap verir:
 
 > “Sen kimsin ve gerçekten söylediğin kişi misin?”
 
-Örneğin bir kullanıcı sisteme e-posta adresi ve parola ile giriş yaptığında uygulama, verilen bilgileri kontrol ederek kullanıcının kimliğini doğrulamaya çalışır.
-
-OWASP, authentication kavramını bir bireyin, sistemin veya varlığın iddia ettiği kimliğe sahip olduğunun bir ya da daha fazla doğrulayıcı aracılığıyla kontrol edilmesi olarak tanımlar.
+Örneğin bir kullanıcı sisteme e-posta adresi ve parola ile giriş yaptığında uygulama, verilen bilgileri kontrol ederek kullanıcının kimliğini doğrulamaya çalışır. OWASP, authentication kavramını bir bireyin, sistemin veya varlığın iddia ettiği kimliğe sahip olduğunun bir ya da daha fazla doğrulayıcı aracılığıyla kontrol edilmesi olarak tanımlar.
 
 ---
 
@@ -293,9 +278,7 @@ Kimlik doğrulama yöntemleri genellikle üç temel faktör altında değerlendi
 
 ### Bilinen bir şey
 
-Kullanıcının bildiği bilgidir.
-
-Örnekler:
+Kullanıcının bildiği bilgidir. Örnekler:
 
 * Parola
 * PIN kodu
@@ -303,9 +286,7 @@ Kullanıcının bildiği bilgidir.
 
 ### Sahip olunan bir şey
 
-Kullanıcının fiziksel veya dijital olarak sahip olduğu araçtır.
-
-Örnekler:
+Kullanıcının fiziksel veya dijital olarak sahip olduğu araçtır. Örnekler:
 
 * Cep telefonu
 * Güvenlik anahtarı
@@ -314,9 +295,7 @@ Kullanıcının fiziksel veya dijital olarak sahip olduğu araçtır.
 
 ### Kullanıcıya ait bir özellik
 
-Kullanıcının biyometrik özelliğidir.
-
-Örnekler:
+Kullanıcının biyometrik özelliğidir. Örnekler:
 
 * Parmak izi
 * Yüz tanıma
@@ -329,19 +308,13 @@ Bir sistem yalnızca parola kullanıyorsa tek faktörlü kimlik doğrulama yapma
 
 ## 3.3. MFA — Multi-Factor Authentication
 
-MFA, kullanıcının kimliğini en az iki farklı faktörle doğrulayan güvenlik yöntemidir.
-
-Örneğin:
+MFA, kullanıcının kimliğini en az iki farklı faktörle doğrulayan güvenlik yöntemidir. Örneğin:
 
 1. Kullanıcı parolasını girer.
 2. Telefonuna gelen tek kullanımlık kodu girer.
 3. İki kontrol de başarılı olursa giriş yapılır.
 
-Burada parola “bilinen bir şey”, telefon ise “sahip olunan bir şey” faktörüdür.
-
-İki farklı parola istemek MFA değildir. Çünkü iki bilgi de aynı kategoriye, yani “bilinen bir şey” kategorisine girer.
-
-MFA özellikle şu saldırıların etkisini azaltabilir:
+Burada parola “bilinen bir şey”, telefon ise “sahip olunan bir şey” faktörüdür. İki farklı parola istemek MFA değildir. Çünkü iki bilgi de aynı kategoriye, yani “bilinen bir şey” kategorisine girer. MFA özellikle şu saldırıların etkisini azaltabilir:
 
 * Çalınmış parola kullanımı
 * Credential stuffing
@@ -364,28 +337,20 @@ Temel bir kullanıcı giriş işlemi şu adımlardan oluşur:
 6. Sunucu güvenli bir session oluşturur veya token üretir.
 7. Kullanıcının sonraki isteklerinde bu session veya token kontrol edilir.
 
-Parola doğrulama işlemi istemci tarafında değil, güvenilir sunucu tarafında yapılmalıdır.
-
-Frontend tarafından gönderilen `isAdmin`, `role` veya `authenticated` gibi değerlere güvenilmemelidir. Kullanıcı tarayıcıdaki JavaScript kodlarını ve gönderilen istekleri değiştirebilir.
+Parola doğrulama işlemi istemci tarafında değil, güvenilir sunucu tarafında yapılmalıdır. Frontend tarafından gönderilen `isAdmin`, `role` veya `authenticated` gibi değerlere güvenilmemelidir. Kullanıcı tarayıcıdaki JavaScript kodlarını ve gönderilen istekleri değiştirebilir.
 
 ---
 
 ## 3.5. Parolalar Nasıl Saklanmalıdır?
 
-Parolalar veri tabanında kesinlikle açık metin biçiminde saklanmamalıdır.
-
-Yanlış örnek:
+Parolalar veri tabanında kesinlikle açık metin biçiminde saklanmamalıdır. Yanlış örnek:
 
 ```text
 email: ozge@example.com
 password: 123456
 ```
 
-Veri tabanı ele geçirilirse saldırgan bütün kullanıcı parolalarını doğrudan görebilir.
-
-Parolalar ayrıca geri çözülebilir bir şifreleme yöntemiyle saklanmamalıdır. Parolaların genellikle tekrar elde edilmesine ihtiyaç yoktur. Sistem yalnızca kullanıcının gönderdiği parolanın doğru olup olmadığını kontrol etmelidir.
-
-Bu nedenle parola saklama işleminde **hashing** kullanılır.
+Veri tabanı ele geçirilirse saldırgan bütün kullanıcı parolalarını doğrudan görebilir. Parolalar ayrıca geri çözülebilir bir şifreleme yöntemiyle saklanmamalıdır. Parolaların genellikle tekrar elde edilmesine ihtiyaç yoktur. Sistem yalnızca kullanıcının gönderdiği parolanın doğru olup olmadığını kontrol etmelidir. Bu nedenle parola saklama işleminde **hashing** kullanılır.
 
 OWASP; Argon2id, scrypt, bcrypt veya uygun yapılandırılmış PBKDF2 gibi parola saklamak için tasarlanmış yavaş algoritmaların kullanılmasını, hızlı SHA-256 gibi genel amaçlı özet algoritmalarının tek başına parola saklamak için tercih edilmemesini önerir.
 
@@ -401,23 +366,17 @@ Hashing işlemi tek yönlüdür. Hash değerinden orijinal parolanın doğrudan 
 
 ### Salt
 
-Salt, her parola için üretilen rastgele veridir.
-
-Parola hash’lenmeden önce salt ile birlikte işlenir:
+Salt, her parola için üretilen rastgele veridir. Parola hash’lenmeden önce salt ile birlikte işlenir:
 
 ```text
 Hash(parola + salt)
 ```
 
-Salt sayesinde aynı parolaya sahip iki kullanıcının veri tabanındaki parola özetleri farklı olur.
-
-Salt ayrıca önceden hazırlanmış rainbow table saldırılarının etkinliğini azaltır.
+Salt sayesinde aynı parolaya sahip iki kullanıcının veri tabanındaki parola özetleri farklı olur. Salt ayrıca önceden hazırlanmış rainbow table saldırılarının etkinliğini azaltır.
 
 ### Pepper
 
-Pepper, parola hash işlemine eklenen ve veri tabanından ayrı tutulan gizli bir değerdir.
-
-Salt genellikle parola özetiyle birlikte veri tabanında tutulabilirken pepper gizli yapılandırma veya secret management sisteminde saklanmalıdır.
+Pepper, parola hash işlemine eklenen ve veri tabanından ayrı tutulan gizli bir değerdir. Salt genellikle parola özetiyle birlikte veri tabanında tutulabilirken pepper gizli yapılandırma veya secret management sisteminde saklanmalıdır.
 
 ---
 
@@ -425,9 +384,7 @@ Salt genellikle parola özetiyle birlikte veri tabanında tutulabilirken pepper 
 
 ### Brute Force
 
-Saldırgan çok sayıda parola deneyerek doğru parolayı bulmaya çalışır.
-
-Korunma yöntemleri:
+Saldırgan çok sayıda parola deneyerek doğru parolayı bulmaya çalışır. Korunma yöntemleri:
 
 * Rate limiting
 * Geçici hesap kilitleme
@@ -438,21 +395,15 @@ Korunma yöntemleri:
 
 ### Credential Stuffing
 
-Başka sistemlerden sızdırılmış kullanıcı adı ve parolaların farklı uygulamalarda denenmesidir.
-
-Kullanıcılar aynı parolayı birden fazla sistemde kullanıyorsa saldırı başarılı olabilir.
+Başka sistemlerden sızdırılmış kullanıcı adı ve parolaların farklı uygulamalarda denenmesidir. Kullanıcılar aynı parolayı birden fazla sistemde kullanıyorsa saldırı başarılı olabilir.
 
 ### Password Spraying
 
-Saldırgan tek bir hesap üzerinde çok fazla parola denemek yerine çok sayıda kullanıcı hesabında birkaç yaygın parola dener.
-
-Örneğin yüzlerce hesap üzerinde `Password123` parolası denenebilir.
+Saldırgan tek bir hesap üzerinde çok fazla parola denemek yerine çok sayıda kullanıcı hesabında birkaç yaygın parola dener. Örneğin yüzlerce hesap üzerinde `Password123` parolası denenebilir.
 
 ### User Enumeration
 
-Uygulamanın hata mesajları, belirli bir kullanıcının sistemde kayıtlı olup olmadığını ortaya çıkarabilir.
-
-Riskli mesaj:
+Uygulamanın hata mesajları, belirli bir kullanıcının sistemde kayıtlı olup olmadığını ortaya çıkarabilir. Riskli mesaj:
 
 ```text
 Bu e-posta sistemde kayıtlı değildir.
@@ -472,9 +423,7 @@ Saldırgan kullanıcının session kimliğini veya token’ını ele geçirerek 
 
 ### Session Fixation
 
-Saldırgan önceden bildiği bir session kimliğinin mağdur tarafından kullanılmasını sağlamaya çalışır. Kullanıcı giriş yaptıktan sonra session kimliği değiştirilmezse saldırgan aynı session üzerinden hesaba erişebilir.
-
-Bunun önlenmesi için başarılı girişten sonra session kimliği yenilenmelidir.
+Saldırgan önceden bildiği bir session kimliğinin mağdur tarafından kullanılmasını sağlamaya çalışır. Kullanıcı giriş yaptıktan sonra session kimliği değiştirilmezse saldırgan aynı session üzerinden hesaba erişebilir. Bunun önlenmesi için başarılı girişten sonra session kimliği yenilenmelidir.
 
 ---
 
@@ -482,17 +431,11 @@ Bunun önlenmesi için başarılı girişten sonra session kimliği yenilenmelid
 
 ## 4.1. Authorization Nedir?
 
-Authorization, kimliği belirlenmiş bir kullanıcının belirli bir kaynağa erişme veya belirli bir işlemi gerçekleştirme iznine sahip olup olmadığının kontrol edilmesidir.
-
-Türkçede **yetkilendirme** olarak ifade edilir.
-
-Authorization şu soruya cevap verir:
+Authorization, kimliği belirlenmiş bir kullanıcının belirli bir kaynağa erişme veya belirli bir işlemi gerçekleştirme iznine sahip olup olmadığının kontrol edilmesidir. Türkçede **yetkilendirme** olarak ifade edilir. Authorization şu soruya cevap verir:
 
 > “Bu işlemi yapmaya yetkin var mı?”
 
-Bir kullanıcının giriş yapmış olması, sistemdeki bütün işlemleri yapabileceği anlamına gelmez.
-
-Örneğin:
+Bir kullanıcının giriş yapmış olması, sistemdeki bütün işlemleri yapabileceği anlamına gelmez. Örneğin:
 
 * Normal kullanıcı kendi profilini görüntüleyebilir.
 * Yönetici bütün kullanıcıları görüntüleyebilir.
@@ -507,13 +450,7 @@ OWASP, authentication ile kimliğin doğrulandığını; authorization ile doğr
 
 ## 4.2. Yetkilendirme Nerede Yapılmalıdır?
 
-Yetkilendirme kontrolleri mutlaka sunucu tarafında yapılmalıdır.
-
-Yalnızca frontend’de bir butonu gizlemek güvenlik sağlamaz.
-
-Örneğin normal kullanıcı için “Kullanıcıyı Sil” butonu gizlenmiş olabilir. Ancak kullanıcı tarayıcının geliştirici araçlarını veya Postman gibi bir aracı kullanarak doğrudan silme API’sine istek gönderebilir.
-
-Frontend kontrolü:
+Yetkilendirme kontrolleri mutlaka sunucu tarafında yapılmalıdır. Yalnızca frontend’de bir butonu gizlemek güvenlik sağlamaz. Örneğin normal kullanıcı için “Kullanıcıyı Sil” butonu gizlenmiş olabilir. Ancak kullanıcı tarayıcının geliştirici araçlarını veya Postman gibi bir aracı kullanarak doğrudan silme API’sine istek gönderebilir. Frontend kontrolü:
 
 ```javascript
 if (user.role === "admin") {
@@ -521,9 +458,7 @@ if (user.role === "admin") {
 }
 ```
 
-Bu kontrol yalnızca arayüz davranışını düzenler.
-
-Gerçek güvenlik kontrolü backend tarafında yapılmalıdır:
+Bu kontrol yalnızca arayüz davranışını düzenler. Gerçek güvenlik kontrolü backend tarafında yapılmalıdır:
 
 ```javascript
 if (currentUser.role !== "admin") {
@@ -541,9 +476,7 @@ En güvenli yaklaşım, hem arayüzde uygun seçenekleri göstermek hem de her k
 
 ### RBAC — Role-Based Access Control
 
-Yetkilerin rollere göre belirlenmesidir.
-
-Örnek roller:
+Yetkilerin rollere göre belirlenmesidir. Örnek roller:
 
 * Admin
 * Editor
@@ -563,9 +496,7 @@ RBAC anlaşılır ve yaygın bir modeldir. Ancak çok karmaşık iş kuralların
 
 ### ABAC — Attribute-Based Access Control
 
-Yetkilendirme kararı kullanıcı, kaynak, işlem ve ortam özelliklerine göre verilir.
-
-Örneğin:
+Yetkilendirme kararı kullanıcı, kaynak, işlem ve ortam özelliklerine göre verilir. Örneğin:
 
 * Kullanıcının departmanı
 * Belgenin gizlilik seviyesi
@@ -585,9 +516,7 @@ belgeyi görüntüleyebilir.
 
 ### ACL — Access Control List
 
-Her kaynak için hangi kullanıcı veya grupların hangi izinlere sahip olduğunun tutulmasıdır.
-
-Örnek:
+Her kaynak için hangi kullanıcı veya grupların hangi izinlere sahip olduğunun tutulmasıdır. Örnek:
 
 ```text
 rapor.pdf:
@@ -598,9 +527,7 @@ rapor.pdf:
 
 ### ReBAC — Relationship-Based Access Control
 
-Yetkilendirme kararının kullanıcılar veya varlıklar arasındaki ilişkilere göre verilmesidir.
-
-Örneğin:
+Yetkilendirme kararının kullanıcılar veya varlıklar arasındaki ilişkilere göre verilmesidir. Örneğin:
 
 * Kullanıcı belgenin sahibiyse düzenleyebilir.
 * Kullanıcı proje ekibindeyse projeyi görüntüleyebilir.
@@ -610,19 +537,13 @@ Yetkilendirme kararının kullanıcılar veya varlıklar arasındaki ilişkilere
 
 ## 4.4. Least Privilege — En Az Yetki İlkesi
 
-Bir kullanıcıya, servise veya uygulamaya yalnızca görevini yerine getirebilmesi için gerekli minimum yetkiler verilmelidir.
-
-Örneğin yalnızca kayıt okuyan bir uygulamanın veri tabanı kullanıcısına `DELETE`, `DROP` veya yönetici yetkisi verilmemelidir.
-
-En az yetki ilkesi, bir hesap ele geçirildiğinde oluşabilecek zararı sınırlar.
+Bir kullanıcıya, servise veya uygulamaya yalnızca görevini yerine getirebilmesi için gerekli minimum yetkiler verilmelidir. Örneğin yalnızca kayıt okuyan bir uygulamanın veri tabanı kullanıcısına `DELETE`, `DROP` veya yönetici yetkisi verilmemelidir. En az yetki ilkesi, bir hesap ele geçirildiğinde oluşabilecek zararı sınırlar.
 
 ---
 
 ## 4.5. Deny by Default
 
-Varsayılan davranış erişime izin vermek değil, erişimi reddetmek olmalıdır.
-
-Yanlış yaklaşım:
+Varsayılan davranış erişime izin vermek değil, erişimi reddetmek olmalıdır. Yanlış yaklaşım:
 
 ```text
 Özel olarak yasaklanmadıysa izin ver.
@@ -640,9 +561,7 @@ Yeni bir endpoint eklendiğinde gerekli yetkilendirme kuralı tanımlanmadıysa 
 
 ## 4.6. IDOR — Insecure Direct Object Reference
 
-IDOR, nesne seviyesindeki yetkilendirme kontrolünün eksik olması nedeniyle kullanıcının başka kullanıcılara ait kaynaklara erişebilmesidir.
-
-Örnek istek:
+IDOR, nesne seviyesindeki yetkilendirme kontrolünün eksik olması nedeniyle kullanıcının başka kullanıcılara ait kaynaklara erişebilmesidir. Örnek istek:
 
 ```http
 GET /api/orders/1001
@@ -654,9 +573,7 @@ Kullanıcı adres çubuğundaki değeri değiştirir:
 GET /api/orders/1002
 ```
 
-Sunucu yalnızca kullanıcının giriş yapıp yapmadığını kontrol ediyor fakat `1002` numaralı siparişin bu kullanıcıya ait olup olmadığını kontrol etmiyorsa yetkilendirme açığı oluşur.
-
-Güvenli kontrol:
+Sunucu yalnızca kullanıcının giriş yapıp yapmadığını kontrol ediyor fakat `1002` numaralı siparişin bu kullanıcıya ait olup olmadığını kontrol etmiyorsa yetkilendirme açığı oluşur. Güvenli kontrol:
 
 ```javascript
 const order = await findOrderById(orderId);
@@ -690,9 +607,7 @@ Tahmin edilmesi zor UUID kullanmak yardımcı olabilir ancak yetkilendirme kontr
 
 ### 401 Unauthorized
 
-Adında “Unauthorized” geçmesine rağmen çoğunlukla kullanıcının kimliğinin doğrulanamadığını ifade eder.
-
-Örnekler:
+Adında “Unauthorized” geçmesine rağmen çoğunlukla kullanıcının kimliğinin doğrulanamadığını ifade eder. Örnekler:
 
 * Token bulunmuyor.
 * Token geçersiz.
@@ -701,9 +616,7 @@ Adında “Unauthorized” geçmesine rağmen çoğunlukla kullanıcının kimli
 
 ### 403 Forbidden
 
-Kullanıcının kimliği bilinmektedir fakat istenen işlem için yetkisi yoktur.
-
-Örnek:
+Kullanıcının kimliği bilinmektedir fakat istenen işlem için yetkisi yoktur. Örnek:
 
 * Normal kullanıcının yönetici paneline erişmeye çalışması
 * Kullanıcının başka bir kullanıcıya ait kaydı silmeye çalışması
@@ -732,9 +645,7 @@ Sunucu session bilgilerini kendi tarafında saklar:
 a8f7c2... → userId: 42, role: admin
 ```
 
-Tarayıcıya yalnızca session kimliği gönderilir.
-
-Sonraki isteklerde tarayıcı cookie aracılığıyla session kimliğini gönderir ve sunucu kullanıcıyı session deposundan bulur.
+Tarayıcıya yalnızca session kimliği gönderilir. Sonraki isteklerde tarayıcı cookie aracılığıyla session kimliğini gönderir ve sunucu kullanıcıyı session deposundan bulur.
 
 ### Avantajları
 
@@ -756,9 +667,7 @@ Session kimliği cookie içinde tutuluyorsa şu özellikler önemlidir:
 
 ### HttpOnly
 
-JavaScript’in cookie değerini okumasını engeller.
-
-Bu ayar, XSS sonucunda token veya session kimliğinin JavaScript ile okunması riskini azaltır. Ancak XSS açığını tamamen çözmez; saldırgan kurbanın tarayıcısından istek göndermeye devam edebilir.
+JavaScript’in cookie değerini okumasını engeller. Bu ayar, XSS sonucunda token veya session kimliğinin JavaScript ile okunması riskini azaltır. Ancak XSS açığını tamamen çözmez; saldırgan kurbanın tarayıcısından istek göndermeye devam edebilir.
 
 ### Secure
 
@@ -766,9 +675,7 @@ Cookie’nin yalnızca HTTPS bağlantıları üzerinden gönderilmesini sağlar.
 
 ### SameSite
 
-Cookie’nin farklı sitelerden başlatılan isteklerde gönderilme davranışını kontrol eder.
-
-Yaygın değerler:
+Cookie’nin farklı sitelerden başlatılan isteklerde gönderilme davranışını kontrol eder. Yaygın değerler:
 
 * `Strict`
 * `Lax`
@@ -778,9 +685,7 @@ Yaygın değerler:
 
 ### Path ve Domain
 
-Cookie’nin hangi adreslere gönderileceğini sınırlar.
-
-Cookie mümkün olduğunca dar kapsamlı tanımlanmalıdır.
+Cookie’nin hangi adreslere gönderileceğini sınırlar. Cookie mümkün olduğunca dar kapsamlı tanımlanmalıdır.
 
 ---
 
@@ -801,9 +706,7 @@ Cookie mümkün olduğunca dar kapsamlı tanımlanmalıdır.
 
 ## 7.1. JWT Nedir?
 
-JWT, iki taraf arasında claim adı verilen bilgilerin kompakt ve URL uyumlu bir biçimde taşınmasını sağlayan token formatıdır.
-
-JWT genellikle şu amaçlarla kullanılır:
+JWT, iki taraf arasında claim adı verilen bilgilerin kompakt ve URL uyumlu bir biçimde taşınmasını sağlayan token formatıdır. JWT genellikle şu amaçlarla kullanılır:
 
 * API kimlik doğrulaması
 * Yetki bilgilerinin taşınması
@@ -811,9 +714,7 @@ JWT genellikle şu amaçlarla kullanılır:
 * OpenID Connect ID token’ları
 * Dağıtık servisler arasında kimlik bilgilerinin aktarılması
 
-RFC 7519’a göre JWT, taraflar arasında claim’leri taşımak için kullanılan kompakt ve URL güvenli bir formattır. JWT; imzalanmış bir JWS veya şifrelenmiş bir JWE biçiminde olabilir.
-
-Önemli nokta şudur:
+RFC 7519’a göre JWT, taraflar arasında claim’leri taşımak için kullanılan kompakt ve URL güvenli bir formattır. JWT; imzalanmış bir JWS veya şifrelenmiş bir JWE biçiminde olabilir.Önemli nokta şudur:
 
 > Her JWT şifrelenmiş değildir.
 
@@ -864,9 +765,7 @@ Claim adı verilen bilgileri içerir.
 
 ### Signature
 
-Header ve payload’ın gizli anahtar veya özel anahtar kullanılarak imzalanmasıyla oluşturulur.
-
-İmzanın amacı:
+Header ve payload’ın gizli anahtar veya özel anahtar kullanılarak imzalanmasıyla oluşturulur. İmzanın amacı:
 
 * Token’ın değiştirilip değiştirilmediğini kontrol etmek
 * Token’ın güvenilen bir üretici tarafından oluşturulduğunu doğrulamak
@@ -899,9 +798,7 @@ Uygulamalar arasında ortak kullanılabilen, çakışmayacak şekilde tanımlanm
 
 ### Private Claims
 
-Uygulamaya özel alanlardır.
-
-Örnek:
+Uygulamaya özel alanlardır. Örnek:
 
 ```json
 {
@@ -911,9 +808,7 @@ Uygulamaya özel alanlardır.
 }
 ```
 
-Token içerisine hassas bilgiler konulmamalıdır.
-
-Şu bilgiler imzalı fakat şifrelenmemiş JWT payload’ında tutulmamalıdır:
+Token içerisine hassas bilgiler konulmamalıdır. Şu bilgiler imzalı fakat şifrelenmemiş JWT payload’ında tutulmamalıdır:
 
 * Parola
 * Kredi kartı bilgisi
@@ -954,11 +849,7 @@ Authorization: Bearer ACCESS_TOKEN
 HS256
 ```
 
-Token’ı imzalayan ve doğrulayan taraf aynı gizli anahtarı kullanır.
-
-Avantajı basit ve hızlı olmasıdır.
-
-Dezavantajı ise token doğrulayan bütün servislerin gizli anahtarı bilmesi gerekebilmesidir. Bu servislerden biri ele geçirilirse saldırgan yeni token üretebilir.
+Token’ı imzalayan ve doğrulayan taraf aynı gizli anahtarı kullanır. *Avantajı* basit ve hızlı olmasıdır. *Dezavantajı* ise token doğrulayan bütün servislerin gizli anahtarı bilmesi gerekebilmesidir. Bu servislerden biri ele geçirilirse saldırgan yeni token üretebilir.
 
 ### Asimetrik Algoritmalar
 
@@ -969,19 +860,13 @@ RS256
 ES256
 ```
 
-Token özel anahtarla imzalanır ve açık anahtarla doğrulanır.
-
-Özel anahtar yalnızca token üreten serviste bulunur. Diğer servisler açık anahtarla doğrulama yapabilir.
-
-Dağıtık sistemlerde bu yaklaşım anahtar paylaşımı açısından avantaj sağlayabilir.
+Token özel anahtarla imzalanır ve açık anahtarla doğrulanır. Özel anahtar yalnızca token üreten serviste bulunur. Diğer servisler açık anahtarla doğrulama yapabilir. Dağıtık sistemlerde bu yaklaşım anahtar paylaşımı açısından avantaj sağlayabilir.
 
 ---
 
 ## 7.6. JWT Doğrulamasında Kontrol Edilmesi Gerekenler
 
-Bir JWT yalnızca decode edilmemelidir. Kriptografik olarak doğrulanmalıdır.
-
-Kontrol edilmesi gereken başlıca alanlar:
+Bir JWT yalnızca decode edilmemelidir. Kriptografik olarak doğrulanmalıdır. Kontrol edilmesi gereken başlıca alanlar:
 
 * İmza geçerli mi?
 * Beklenen algoritma mı kullanılmış?
@@ -1004,9 +889,7 @@ RFC 8725, uygulamaların izin verilen algoritmaları açık biçimde belirlemesi
 
 ### Access Token
 
-API’ye erişmek için kullanılan, genellikle kısa ömürlü token’dır.
-
-Örneğin:
+API’ye erişmek için kullanılan, genellikle kısa ömürlü token’dır. Örneğin:
 
 ```text
 Geçerlilik süresi: 10 dakika
@@ -1016,11 +899,7 @@ Access token ele geçirilirse saldırgan token süresi boyunca API’ye erişebi
 
 ### Refresh Token
 
-Yeni access token almak için kullanılır.
-
-Genellikle access token’dan daha uzun ömürlüdür ve daha hassastır.
-
-Refresh token:
+Yeni access token almak için kullanılır. Genellikle access token’dan daha uzun ömürlüdür ve daha hassastır. Refresh token:
 
 * API işlemlerinde doğrudan kullanılmamalıdır.
 * Güvenli biçimde saklanmalıdır.
@@ -1047,19 +926,11 @@ JWT saklama konusunda tek bir çözüm her uygulama için doğru değildir. Uygu
 
 ### LocalStorage
 
-Avantajı JavaScript tarafından kolayca kullanılabilmesidir.
-
-Ancak sayfada XSS açığı varsa saldırgan JavaScript ile localStorage içerisindeki token’ı okuyabilir.
-
-Bu nedenle hassas session token’larını localStorage’da tutmak ciddi risk oluşturabilir. OWASP, tarayıcı tarafındaki depolamanın gizlilik sağladığının varsayılmaması gerektiğini ve hassas kimlik doğrulama verilerinin istemci depolarında tutulmasının dikkatle değerlendirilmesini belirtir.
+Avantajı JavaScript tarafından kolayca kullanılabilmesidir. Ancak sayfada XSS açığı varsa saldırgan JavaScript ile localStorage içerisindeki token’ı okuyabilir. Bu nedenle hassas session token’larını localStorage’da tutmak ciddi risk oluşturabilir. OWASP, tarayıcı tarafındaki depolamanın gizlilik sağladığının varsayılmaması gerektiğini ve hassas kimlik doğrulama verilerinin istemci depolarında tutulmasının dikkatle değerlendirilmesini belirtir.
 
 ### HttpOnly Cookie
 
-JavaScript cookie değerini doğrudan okuyamaz.
-
-Bu durum token hırsızlığı riskini azaltabilir. Ancak cookie isteklerle otomatik gönderildiği için CSRF riski değerlendirilmelidir.
-
-Koruma yöntemleri:
+JavaScript cookie değerini doğrudan okuyamaz. Bu durum token hırsızlığı riskini azaltabilir. Ancak cookie isteklerle otomatik gönderildiği için CSRF riski değerlendirilmelidir. Koruma yöntemleri:
 
 * `SameSite`
 * CSRF token
@@ -1068,9 +939,7 @@ Koruma yöntemleri:
 
 ### Memory
 
-Access token yalnızca uygulama belleğinde tutulabilir.
-
-Sayfa yenilendiğinde token kaybolur. Kullanıcı deneyimi için HttpOnly cookie içerisinde refresh token gibi ek bir mekanizma kullanılabilir.
+Access token yalnızca uygulama belleğinde tutulabilir. Sayfa yenilendiğinde token kaybolur. Kullanıcı deneyimi için HttpOnly cookie içerisinde refresh token gibi ek bir mekanizma kullanılabilir.
 
 ---
 
@@ -1103,27 +972,19 @@ JWT her projede session yerine kullanılması gereken otomatik bir çözüm değ
 
 ## 8.1. OAuth Nedir?
 
-OAuth 2.0, bir uygulamanın kullanıcının parolasını almadan başka bir servisteki belirli kaynaklara sınırlı erişim elde etmesini sağlayan yetkilendirme çerçevesidir.
-
-OAuth’un temel amacı authentication değil, **delegated authorization**, yani devredilmiş yetkilendirmedir.
-
-RFC 6749, OAuth 2.0’ın üçüncü taraf uygulamalara kullanıcı adına veya kendi adına HTTP servislerine sınırlı erişim verilmesini sağladığını belirtir. Kullanıcı parolasını üçüncü taraf uygulamaya vermek yerine uygulamaya belirli kapsam ve süreye sahip access token verilir.
+OAuth 2.0, bir uygulamanın kullanıcının parolasını almadan başka bir servisteki belirli kaynaklara sınırlı erişim elde etmesini sağlayan yetkilendirme çerçevesidir. OAuth’un temel amacı authentication değil, **delegated authorization**, yani devredilmiş yetkilendirmedir. RFC 6749, OAuth 2.0’ın üçüncü taraf uygulamalara kullanıcı adına veya kendi adına HTTP servislerine sınırlı erişim verilmesini sağladığını belirtir. Kullanıcı parolasını üçüncü taraf uygulamaya vermek yerine uygulamaya belirli kapsam ve süreye sahip access token verilir.
 
 ---
 
 ## 8.2. OAuth Neden Gereklidir?
 
-Bir fotoğraf düzenleme uygulamasının Google Drive içerisindeki belirli fotoğraflara erişmek istediğini düşünelim.
-
-Güvensiz yöntem:
+Bir fotoğraf düzenleme uygulamasının Google Drive içerisindeki belirli fotoğraflara erişmek istediğini düşünelim. Güvensiz yöntem:
 
 ```text
 Google kullanıcı adını ve parolanı uygulamaya ver.
 ```
 
-Bu durumda üçüncü taraf uygulama kullanıcının bütün hesabına erişebilir ve parolayı saklayabilir.
-
-OAuth yaklaşımında:
+Bu durumda üçüncü taraf uygulama kullanıcının bütün hesabına erişebilir ve parolayı saklayabilir. OAuth yaklaşımında:
 
 1. Uygulama kullanıcıyı Google’ın yetkilendirme ekranına yönlendirir.
 2. Kullanıcı doğrudan Google üzerinde giriş yapar.
@@ -1142,15 +1003,11 @@ OAuth 2.0 dört temel rol tanımlar.
 
 ### Resource Owner
 
-Korunan kaynağın sahibi veya erişim izni verebilen taraftır.
-
-Çoğunlukla son kullanıcıdır.
+Korunan kaynağın sahibi veya erişim izni verebilen taraftır. Çoğunlukla son kullanıcıdır.
 
 ### Client
 
-Korumalı kaynağa erişmek isteyen uygulamadır.
-
-Örnek:
+Korumalı kaynağa erişmek isteyen uygulamadır. Örnek:
 
 * Mobil uygulama
 * Web uygulaması
@@ -1163,9 +1020,7 @@ Kullanıcının kimliğini doğrular, izin ekranını gösterir ve token üretir
 
 ### Resource Server
 
-Korunan API veya verileri barındıran sunucudur.
-
-Access token’ı kontrol ederek istenen kaynağa erişim verir.
+Korunan API veya verileri barındıran sunucudur. Access token’ı kontrol ederek istenen kaynağa erişim verir.
 
 ---
 
@@ -1192,17 +1047,13 @@ Access token’ın tarayıcı yönlendirmesi üzerinden doğrudan taşınması y
 
 ## 8.5. PKCE Nedir?
 
-PKCE, Authorization Code Flow’un özellikle public client’larda güvenliğini artırmak için kullanılır.
-
-Public client’lar şunları içerebilir:
+PKCE, Authorization Code Flow’un özellikle public client’larda güvenliğini artırmak için kullanılır. Public client’lar şunları içerebilir:
 
 * Mobil uygulamalar
 * Tek sayfa web uygulamaları
 * Masaüstü uygulamalar
 
-Bu uygulamalarda kalıcı bir client secret güvenli biçimde saklanamaz.
-
-PKCE akışında client:
+Bu uygulamalarda kalıcı bir client secret güvenli biçimde saklanamaz. PKCE akışında client:
 
 1. Rastgele bir `code_verifier` üretir.
 2. Bundan bir `code_challenge` oluşturur.
@@ -1210,17 +1061,13 @@ PKCE akışında client:
 4. Token isteğinde orijinal `code_verifier` gönderir.
 5. Authorization server ikisinin eşleştiğini doğrular.
 
-Saldırgan authorization code’u ele geçirse bile `code_verifier` değerine sahip olmadığı için token alamaz.
-
-Güncel OAuth güvenlik önerileri Authorization Code Flow’un PKCE ile korunmasını, redirect URI değerlerinin kesin biçimde doğrulanmasını ve eski, daha riskli akışların kullanılmamasını önerir.
+Saldırgan authorization code’u ele geçirse bile `code_verifier` değerine sahip olmadığı için token alamaz. Güncel OAuth güvenlik önerileri Authorization Code Flow’un PKCE ile korunmasını, redirect URI değerlerinin kesin biçimde doğrulanmasını ve eski, daha riskli akışların kullanılmamasını önerir.
 
 ---
 
 ## 8.6. Scope Nedir?
 
-Scope, access token’ın hangi işlemleri yapabileceğini belirtir.
-
-Örnek scope’lar:
+Scope, access token’ın hangi işlemleri yapabileceğini belirtir. Örnek scope’lar:
 
 ```text
 profile.read
@@ -1231,17 +1078,13 @@ orders.read
 orders.create
 ```
 
-Uygulama yalnızca ihtiyaç duyduğu izinleri istemelidir.
-
-Örneğin yalnızca takvim etkinliklerini görüntüleyen bir uygulamanın silme veya e-posta gönderme izni istemesi en az yetki ilkesine aykırıdır.
+Uygulama yalnızca ihtiyaç duyduğu izinleri istemelidir. Örneğin yalnızca takvim etkinliklerini görüntüleyen bir uygulamanın silme veya e-posta gönderme izni istemesi en az yetki ilkesine aykırıdır.
 
 ---
 
 ## 8.7. Consent Nedir?
 
-Consent, kullanıcının client uygulamaya hangi yetkileri verdiğini onayladığı süreçtir.
-
-İzin ekranı kullanıcıya açık biçimde şunları göstermelidir:
+Consent, kullanıcının client uygulamaya hangi yetkileri verdiğini onayladığı süreçtir. İzin ekranı kullanıcıya açık biçimde şunları göstermelidir:
 
 * Hangi uygulama erişim istiyor?
 * Hangi verilere erişilecek?
@@ -1253,29 +1096,19 @@ Consent, kullanıcının client uygulamaya hangi yetkileri verdiğini onayladı�
 
 ## 8.8. State Parametresi
 
-`state`, OAuth yönlendirme sürecinde isteğin client tarafından başlatıldığını doğrulamaya ve CSRF benzeri saldırıları önlemeye yardımcı olur.
-
-Client authorization isteğinden önce tahmin edilemez bir `state` üretir.
-
-Authorization server callback yaptığında aynı değer geri gelir. Client dönen değeri daha önce oluşturduğu değerle karşılaştırır.
-
-Eşleşmiyorsa işlem reddedilir.
+`state`, OAuth yönlendirme sürecinde isteğin client tarafından başlatıldığını doğrulamaya ve CSRF benzeri saldırıları önlemeye yardımcı olur. Client authorization isteğinden önce tahmin edilemez bir `state` üretir. Authorization server callback yaptığında aynı değer geri gelir. Client dönen değeri daha önce oluşturduğu değerle karşılaştırır. Eşleşmiyorsa işlem reddedilir.
 
 ---
 
 ## 8.9. Redirect URI Güvenliği
 
-Authorization server, yönlendirme adresini önceden kayıtlı adresle kesin biçimde karşılaştırmalıdır.
-
-Riskli davranış:
+Authorization server, yönlendirme adresini önceden kayıtlı adresle kesin biçimde karşılaştırmalıdır. Riskli davranış:
 
 ```text
 https://example.com/callback ile başlayan her adrese izin ver.
 ```
 
-Bu yaklaşım saldırganın benzer veya kötü niyetli adresler kullanmasına yol açabilir.
-
-RFC 9700, kayıtlı redirect URI değerlerinin genel olarak kesin string eşleşmesiyle doğrulanmasını ve açık yönlendiricilerden kaçınılmasını güncel güvenlik uygulamaları arasında belirtir.
+Bu yaklaşım saldırganın benzer veya kötü niyetli adresler kullanmasına yol açabilir. RFC 9700, kayıtlı redirect URI değerlerinin genel olarak kesin string eşleşmesiyle doğrulanmasını ve açık yönlendiricilerden kaçınılmasını güncel güvenlik uygulamaları arasında belirtir.
 
 ---
 
@@ -1283,29 +1116,19 @@ RFC 9700, kayıtlı redirect URI değerlerinin genel olarak kesin string eşleş
 
 ### Implicit Grant
 
-Token’ın tarayıcı yönlendirmesinde doğrudan döndürülmesine dayanır.
-
-Modern uygulamalarda Authorization Code Flow ve PKCE tercih edilir.
+Token’ın tarayıcı yönlendirmesinde doğrudan döndürülmesine dayanır. Modern uygulamalarda Authorization Code Flow ve PKCE tercih edilir.
 
 ### Resource Owner Password Credentials Grant
 
-Kullanıcı, parolasını doğrudan client uygulamaya verir.
-
-Bu yaklaşım OAuth’un temel avantajlarından biri olan “parolayı üçüncü tarafla paylaşmama” ilkesini zayıflatır.
-
-RFC 9700 güncel güvenlik uygulamalarında implicit grant kullanımından kaçınılmasını ve Resource Owner Password Credentials grant’in kullanılmamasını belirtir.
+Kullanıcı, parolasını doğrudan client uygulamaya verir. Bu yaklaşım OAuth’un temel avantajlarından biri olan “parolayı üçüncü tarafla paylaşmama” ilkesini zayıflatır. RFC 9700 güncel güvenlik uygulamalarında implicit grant kullanımından kaçınılmasını ve Resource Owner Password Credentials grant’in kullanılmamasını belirtir.
 
 ---
 
 # 9. OpenID Connect ve OAuth Farkı
 
-OAuth 2.0 esas olarak authorization içindir.
+OAuth 2.0 esas olarak authorization içindir. OAuth tek başına standart bir kullanıcı kimliği doğrulama protokolü değildir.
 
-OAuth tek başına standart bir kullanıcı kimliği doğrulama protokolü değildir.
-
-OpenID Connect, OAuth 2.0 üzerine bir kimlik katmanı ekler ve authentication amacıyla kullanılmasını sağlar.
-
-OpenID Connect, client’ın kullanıcının kimliğini doğrulamasına yardımcı olan bir **ID Token** tanımlar. OpenID Connect Core standardı, OIDC’yi OAuth 2.0 üzerinde çalışan bir kimlik katmanı olarak tanımlar.
+OpenID Connect, OAuth 2.0 üzerine bir kimlik katmanı ekler ve authentication amacıyla kullanılmasını sağlar. OpenID Connect, client’ın kullanıcının kimliğini doğrulamasına yardımcı olan bir **ID Token** tanımlar. OpenID Connect Core standardı, OIDC’yi OAuth 2.0 üzerinde çalışan bir kimlik katmanı olarak tanımlar.
 
 | Kavram         | Temel amacı                                |
 | -------------- | ------------------------------------------ |
@@ -1317,11 +1140,7 @@ OpenID Connect, client’ın kullanıcının kimliğini doğrulamasına yardımc
 
 ## Kritik Hata
 
-ID token, API’ye erişmek için access token yerine kullanılmamalıdır.
-
-Access token resource server için üretilir.
-
-ID token ise client uygulamanın kullanıcı kimliğini doğrulaması için üretilir.
+ID token, API’ye erişmek için access token yerine kullanılmamalıdır. Access token resource server için üretilir. ID token ise client uygulamanın kullanıcı kimliğini doğrulaması için üretilir.
 
 ---
 
@@ -1329,9 +1148,7 @@ ID token ise client uygulamanın kullanıcı kimliğini doğrulaması için üre
 
 ## 10.1. SQL Injection Nedir?
 
-SQL Injection, kullanıcıdan gelen verilerin güvenli biçimde ayrıştırılmadan SQL sorgusuna eklenmesi sonucunda saldırganın sorgunun yapısını değiştirebilmesidir.
-
-OWASP’a göre SQL Injection çoğunlukla kullanıcı girdilerinin string birleştirme yoluyla dinamik SQL sorgularına eklenmesi sonucunda oluşur. Temel savunma, kullanıcı verisini SQL kodundan ayıran parametreli sorgular kullanmaktır.
+SQL Injection, kullanıcıdan gelen verilerin güvenli biçimde ayrıştırılmadan SQL sorgusuna eklenmesi sonucunda saldırganın sorgunun yapısını değiştirebilmesidir. OWASP’a göre SQL Injection çoğunlukla kullanıcı girdilerinin string birleştirme yoluyla dinamik SQL sorgularına eklenmesi sonucunda oluşur. Temel savunma, kullanıcı verisini SQL kodundan ayıran parametreli sorgular kullanmaktır.
 
 ---
 
@@ -1346,11 +1163,7 @@ const query =
   "'";
 ```
 
-Burada kullanıcı girdisi doğrudan SQL sorgusuna eklenmektedir.
-
-Saldırgan, girdi alanına SQL sözdizimini değiştiren özel karakterler gönderirse sorgunun mantığını değiştirebilir.
-
-Sorun, saldırganın belirli bir karakter kullanması değildir. Asıl sorun, uygulamanın **veri ile SQL komutunu birbirinden ayırmamasıdır**.
+Burada kullanıcı girdisi doğrudan SQL sorgusuna eklenmektedir. Saldırgan, girdi alanına SQL sözdizimini değiştiren özel karakterler gönderirse sorgunun mantığını değiştirebilir. Sorun, saldırganın belirli bir karakter kullanması değildir. Asıl sorun, uygulamanın **veri ile SQL komutunu birbirinden ayırmamasıdır**.
 
 ---
 
@@ -1374,15 +1187,11 @@ OWASP, başarılı SQL Injection saldırılarının veri okuma, ekleme, güncell
 
 ### In-Band SQL Injection
 
-Saldırının gönderildiği kanal ile sonuçların alındığı kanal aynıdır.
-
-Örneğin sonuçlar doğrudan web sayfasında gösterilir.
+Saldırının gönderildiği kanal ile sonuçların alındığı kanal aynıdır. Örneğin sonuçlar doğrudan web sayfasında gösterilir.
 
 ### Error-Based SQL Injection
 
-Saldırgan veri tabanının hata mesajlarından bilgi toplamaya çalışır.
-
-Ayrıntılı hata mesajları tablo adlarını, sütunları veya veri tabanı türünü ortaya çıkarabilir.
+Saldırgan veri tabanının hata mesajlarından bilgi toplamaya çalışır. Ayrıntılı hata mesajları tablo adlarını, sütunları veya veri tabanı türünü ortaya çıkarabilir.
 
 ### Union-Based SQL Injection
 
@@ -1402,9 +1211,7 @@ Belirli koşullarda veri tabanının gecikmeli cevap vermesi sağlanarak bilgi �
 
 ### Out-of-Band SQL Injection
 
-Veri, saldırının gönderildiği kanal dışında başka bir iletişim kanalı üzerinden alınır.
-
-OWASP SQL Injection saldırılarını in-band, inferential veya blind ve out-of-band gibi sınıflar altında değerlendirir.
+Veri, saldırının gönderildiği kanal dışında başka bir iletişim kanalı üzerinden alınır. OWASP SQL Injection saldırılarını in-band, inferential veya blind ve out-of-band gibi sınıflar altında değerlendirir.
 
 ---
 
@@ -1412,9 +1219,7 @@ OWASP SQL Injection saldırılarını in-band, inferential veya blind ve out-of-
 
 ### Parametreli Sorgular
 
-En önemli savunma yöntemidir.
-
-Güvenli örnek:
+En önemli savunma yöntemidir. Güvenli örnek:
 
 ```javascript
 const query =
@@ -1426,9 +1231,7 @@ const result = await database.execute(query, [
 ]);
 ```
 
-Burada SQL komutu ile kullanıcı verisi ayrı gönderilir.
-
-Veri tabanı `email` değerini SQL kodu olarak değil veri olarak işler.
+Burada SQL komutu ile kullanıcı verisi ayrı gönderilir. Veri tabanı `email` değerini SQL kodu olarak değil veri olarak işler.
 
 ### Prepared Statements
 
@@ -1436,11 +1239,7 @@ Sorgu yapısı önceden hazırlanır ve kullanıcı değerleri parametre olarak 
 
 ### ORM Kullanımı
 
-ORM araçları parametreli sorguların kullanımını kolaylaştırabilir.
-
-Ancak ORM kullanmak otomatik olarak bütün SQL Injection risklerini ortadan kaldırmaz.
-
-Şu durumlarda risk yeniden ortaya çıkabilir:
+ORM araçları parametreli sorguların kullanımını kolaylaştırabilir. Ancak ORM kullanmak otomatik olarak bütün SQL Injection risklerini ortadan kaldırmaz. Şu durumlarda risk yeniden ortaya çıkabilir:
 
 * Raw SQL kullanılması
 * String birleştirme yapılması
@@ -1465,17 +1264,13 @@ if (!allowedSortFields.includes(sortField)) {
 
 ### En Az Yetkili Veri Tabanı Kullanıcısı
 
-Uygulamanın veri tabanı hesabına yalnızca ihtiyaç duyduğu yetkiler verilmelidir.
-
-Örneğin yalnızca okuma yapan rapor servisine:
+Uygulamanın veri tabanı hesabına yalnızca ihtiyaç duyduğu yetkiler verilmelidir. Örneğin yalnızca okuma yapan rapor servisine:
 
 ```text
 SELECT
 ```
 
-yetkisi verilebilir.
-
-Aşağıdaki yetkilerin verilmesi gereksiz olabilir:
+yetkisi verilebilir. Aşağıdaki yetkilerin verilmesi gereksiz olabilir:
 
 ```text
 DROP
@@ -1486,9 +1281,7 @@ GRANT
 
 ### Hata Mesajlarını Gizleme
 
-Kullanıcıya ham veri tabanı hatası gösterilmemelidir.
-
-Riskli:
+Kullanıcıya ham veri tabanı hatası gösterilmemelidir. Riskli:
 
 ```text
 SQL syntax error near users.password at line 1
@@ -1504,15 +1297,11 @@ Ayrıntılı hata güvenli sunucu loglarında tutulabilir.
 
 ### Input Validation
 
-Girdinin beklenen biçimde olup olmadığı kontrol edilmelidir.
-
-Ancak input validation tek başına SQL Injection savunması değildir. OWASP da input validation’ın yardımcı bir katman olduğunu, asıl savunmanın güvenli ve parametreli API kullanımı olduğunu vurgular.
+Girdinin beklenen biçimde olup olmadığı kontrol edilmelidir. Ancak input validation tek başına SQL Injection savunması değildir. OWASP da input validation’ın yardımcı bir katman olduğunu, asıl savunmanın güvenli ve parametreli API kullanımı olduğunu vurgular.
 
 ### WAF
 
-Web Application Firewall bazı şüpheli istekleri engelleyebilir.
-
-Ancak WAF temel açığı düzeltmez ve tek savunma olarak kullanılmamalıdır. Güvenli kodlama yapılmadan yalnızca WAF’a güvenmek yeterli değildir.
+Web Application Firewall bazı şüpheli istekleri engelleyebilir. Ancak WAF temel açığı düzeltmez ve tek savunma olarak kullanılmamalıdır. Güvenli kodlama yapılmadan yalnızca WAF’a güvenmek yeterli değildir.
 
 ---
 
@@ -1540,11 +1329,7 @@ Parola hash’lenmiş olsa bile daha doğru akış şöyledir:
 
 ## 11.1. XSS Nedir?
 
-XSS, saldırganın kontrol ettiği içeriğin başka kullanıcıların tarayıcısında çalıştırılabilir HTML veya JavaScript olarak yorumlanmasıdır.
-
-XSS’in hedefi veri tabanı değil, çoğunlukla kullanıcının tarayıcısıdır.
-
-OWASP, XSS’in güvenilmeyen verinin dinamik web içeriğine güvenli biçimde dönüştürülmeden eklenmesi sonucunda oluştuğunu belirtir. Saldırı; hesap taklidi, session bilgisi hırsızlığı, hassas verilerin okunması veya sayfa içeriğinin değiştirilmesi gibi sonuçlara neden olabilir.
+XSS, saldırganın kontrol ettiği içeriğin başka kullanıcıların tarayıcısında çalıştırılabilir HTML veya JavaScript olarak yorumlanmasıdır. XSS’in hedefi veri tabanı değil, çoğunlukla kullanıcının tarayıcısıdır. OWASP, XSS’in güvenilmeyen verinin dinamik web içeriğine güvenli biçimde dönüştürülmeden eklenmesi sonucunda oluştuğunu belirtir. Saldırı; hesap taklidi, session bilgisi hırsızlığı, hassas verilerin okunması veya sayfa içeriğinin değiştirilmesi gibi sonuçlara neden olabilir.
 
 ---
 
@@ -1555,11 +1340,7 @@ resultElement.innerHTML =
   "Arama sonucu: " + userInput;
 ```
 
-Kullanıcı girdisi doğrudan `innerHTML` içerisine yerleştirilmektedir.
-
-Tarayıcı bu girdiyi yalnızca metin olarak değil HTML olarak yorumlayabilir. Girdi içerisinde çalıştırılabilir bir yapı bulunuyorsa saldırgan kodu sayfada çalışabilir.
-
-Güvenli yaklaşım:
+Kullanıcı girdisi doğrudan `innerHTML` içerisine yerleştirilmektedir. Tarayıcı bu girdiyi yalnızca metin olarak değil HTML olarak yorumlayabilir. Girdi içerisinde çalıştırılabilir bir yapı bulunuyorsa saldırgan kodu sayfada çalışabilir. Güvenli yaklaşım:
 
 ```javascript
 resultElement.textContent =
@@ -1572,9 +1353,7 @@ resultElement.textContent =
 
 ## 11.3. Reflected XSS
 
-Zararlı girdi istekte gönderilir ve sunucunun cevabında hemen geri yansıtılır.
-
-Örneğin arama parametresi sayfada güvenli biçimde encode edilmeden gösterilebilir.
+Zararlı girdi istekte gönderilir ve sunucunun cevabında hemen geri yansıtılır. Örneğin arama parametresi sayfada güvenli biçimde encode edilmeden gösterilebilir. 
 
 ```text
 /search?q=kullanıcı-girdisi
@@ -1586,9 +1365,7 @@ Saldırgan özel hazırlanmış bağlantıyı mağdura gönderir. Mağdur bağla
 
 ## 11.4. Stored XSS
 
-Zararlı içerik veri tabanına veya kalıcı bir depoya kaydedilir.
-
-Örnek alanlar:
+Zararlı içerik veri tabanına veya kalıcı bir depoya kaydedilir. Örnek alanlar:
 
 * Yorum
 * Profil açıklaması
@@ -1598,25 +1375,19 @@ Zararlı içerik veri tabanına veya kalıcı bir depoya kaydedilir.
 * Kullanıcı adı
 * Dosya adı
 
-Başka kullanıcılar bu içeriği görüntülediğinde zararlı kod çalışabilir.
-
-Stored XSS, tek bir girdinin çok sayıda kullanıcıyı etkileyebilmesi nedeniyle oldukça tehlikelidir.
+Başka kullanıcılar bu içeriği görüntülediğinde zararlı kod çalışabilir. Stored XSS, tek bir girdinin çok sayıda kullanıcıyı etkileyebilmesi nedeniyle oldukça tehlikelidir.
 
 ---
 
 ## 11.5. DOM-Based XSS
 
-Güvenlik açığı tamamen tarayıcı tarafındaki JavaScript kodunda oluşur.
-
-Örneğin:
+Güvenlik açığı tamamen tarayıcı tarafındaki JavaScript kodunda oluşur. Örneğin:
 
 ```javascript
 page.innerHTML = window.location.hash;
 ```
 
-URL fragment değeri güvenli biçimde işlenmeden DOM’a yazıldığı için saldırgan tarayıcı tarafındaki kod akışını kullanabilir.
-
-OWASP, reflected, stored ve DOM tabanlı olmak üzere genel olarak üç XSS biçimini ele alır.
+URL fragment değeri güvenli biçimde işlenmeden DOM’a yazıldığı için saldırgan tarayıcı tarafındaki kod akışını kullanabilir. OWASP, reflected, stored ve DOM tabanlı olmak üzere genel olarak üç XSS biçimini ele alır.
 
 ---
 
@@ -1640,9 +1411,7 @@ XSS sonucunda saldırgan:
 
 ### Output Encoding
 
-Veri, yerleştirileceği bağlama uygun biçimde encode edilmelidir.
-
-Bağlamlar birbirinden farklıdır:
+Veri, yerleştirileceği bağlama uygun biçimde encode edilmelidir. Bağlamlar birbirinden farklıdır:
 
 * HTML gövdesi
 * HTML attribute
@@ -1650,9 +1419,7 @@ Bağlamlar birbirinden farklıdır:
 * JavaScript
 * CSS
 
-HTML için güvenli olan encoding yöntemi JavaScript bağlamında yeterli olmayabilir.
-
-Bu nedenle yalnızca genel bir “özel karakterleri değiştir” fonksiyonu bütün XSS türlerini engelleyemez.
+HTML için güvenli olan encoding yöntemi JavaScript bağlamında yeterli olmayabilir. Bu nedenle yalnızca genel bir “özel karakterleri değiştir” fonksiyonu bütün XSS türlerini engelleyemez.
 
 ### Güvenli DOM API’leri
 
@@ -1682,9 +1449,7 @@ document.createTextNode(userInput);
 
 ### HTML Sanitization
 
-Uygulamanın kullanıcıdan gerçekten HTML kabul etmesi gerekiyorsa içerik güvenilir ve güncel bir sanitizer kütüphanesiyle temizlenmelidir.
-
-Örneğin zengin metin editörlerinde şu etiketlere izin verilebilir:
+Uygulamanın kullanıcıdan gerçekten HTML kabul etmesi gerekiyorsa içerik güvenilir ve güncel bir sanitizer kütüphanesiyle temizlenmelidir. Örneğin zengin metin editörlerinde şu etiketlere izin verilebilir:
 
 ```html
 <p>
@@ -1694,18 +1459,14 @@ Uygulamanın kullanıcıdan gerçekten HTML kabul etmesi gerekiyorsa içerik gü
 <li>
 ```
 
-Ancak script, event handler ve tehlikeli URL şemaları kaldırılmalıdır.
-
-Sanitization ile encoding aynı şey değildir:
+Ancak script, event handler ve tehlikeli URL şemaları kaldırılmalıdır. Sanitization ile encoding aynı şey değildir:
 
 * Encoding, HTML’in metin olarak gösterilmesini sağlar.
 * Sanitization, izin verilen HTML yapısını korurken tehlikeli kısımları kaldırır.
 
 ### Framework Korumasını Devre Dışı Bırakmamak
 
-React gibi modern framework’ler değerleri JSX içerisinde varsayılan olarak escape eder.
-
-Genellikle güvenli:
+React gibi modern framework’ler değerleri JSX içerisinde varsayılan olarak escape eder. Genellikle güvenli:
 
 ```jsx
 <p>{userComment}</p>
@@ -1725,9 +1486,7 @@ OWASP, React’in `dangerouslySetInnerHTML`, Angular’ın güvenlik kontrolleri
 
 ### Content Security Policy — CSP
 
-CSP, tarayıcının hangi kaynaklardan script, stil, görsel veya başka içerik yükleyebileceğini sınırlar.
-
-Örnek politika:
+CSP, tarayıcının hangi kaynaklardan script, stil, görsel veya başka içerik yükleyebileceğini sınırlar. Örnek politika:
 
 ```http
 Content-Security-Policy:
@@ -1736,15 +1495,11 @@ script-src 'self';
 object-src 'none';
 ```
 
-CSP, XSS’e karşı ek savunma katmanıdır.
-
-Ancak güvenli output encoding ve sanitization yerine geçmez. OWASP da CSP’nin temel güvenli geliştirme uygulamalarının üzerine eklenen bir savunma katmanı olması gerektiğini belirtir.
+CSP, XSS’e karşı ek savunma katmanıdır. Ancak güvenli output encoding ve sanitization yerine geçmez. OWASP da CSP’nin temel güvenli geliştirme uygulamalarının üzerine eklenen bir savunma katmanı olması gerektiğini belirtir.
 
 ### HttpOnly Cookie
 
-Session cookie’sine `HttpOnly` eklenmesi JavaScript ile cookie değerinin okunmasını engeller.
-
-Ancak XSS açığını ortadan kaldırmaz. Saldırgan kullanıcının tarayıcısı üzerinden yetkili istekler gönderebilir.
+Session cookie’sine `HttpOnly` eklenmesi JavaScript ile cookie değerinin okunmasını engeller. Ancak XSS açığını ortadan kaldırmaz. Saldırgan kullanıcının tarayıcısı üzerinden yetkili istekler gönderebilir.
 
 ### Tehlikeli JavaScript Fonksiyonlarından Kaçınmak
 
@@ -1764,9 +1519,7 @@ Bu fonksiyonların tamamı her durumda güvensiz değildir. Ancak kullanıcı ko
 
 ### URL Doğrulama
 
-Kullanıcı girdisi `href` veya `src` gibi alanlarda kullanılıyorsa izin verilen protokoller kontrol edilmelidir.
-
-Örneğin yalnızca şunlara izin verilebilir:
+Kullanıcı girdisi `href` veya `src` gibi alanlarda kullanılıyorsa izin verilen protokoller kontrol edilmelidir. Örneğin yalnızca şunlara izin verilebilir:
 
 ```text
 https:
@@ -1859,43 +1612,31 @@ Bu sipariş gerçekten bu kullanıcıya mı ait?
 
 ## 14.1. Yalnızca Frontend’de Yetki Kontrolü Yapmak
 
-Buton gizlemek API’yi korumaz.
-
-Yetkilendirme backend tarafında uygulanmalıdır.
+Buton gizlemek API’yi korumaz. Yetkilendirme backend tarafında uygulanmalıdır.
 
 ---
 
 ## 14.2. JWT’yi Yalnızca Decode Etmek
 
-Decode işlemi payload’ı okumaktır.
-
-Doğrulama değildir.
-
-İmza ve claim kontrolleri yapılmadan token’a güvenilmemelidir.
+Decode işlemi payload’ı okumaktır. Doğrulama değildir. İmza ve claim kontrolleri yapılmadan token’a güvenilmemelidir.
 
 ---
 
 ## 14.3. JWT İçerisine Parola Koymak
 
-JWT payload’ı çoğunlukla okunabilir durumdadır.
-
-Token içerisine sır veya gereksiz kişisel bilgi konulmamalıdır.
+JWT payload’ı çoğunlukla okunabilir durumdadır. Token içerisine sır veya gereksiz kişisel bilgi konulmamalıdır.
 
 ---
 
 ## 14.4. Çok Uzun Ömürlü Access Token Kullanmak
 
-Token çalınırsa uzun süre kullanılabilir.
-
-Kısa ömürlü access token ve kontrollü refresh token yaklaşımı tercih edilmelidir.
+Token çalınırsa uzun süre kullanılabilir. Kısa ömürlü access token ve kontrollü refresh token yaklaşımı tercih edilmelidir.
 
 ---
 
 ## 14.5. OAuth’u Authentication Sanmak
 
-OAuth, temel olarak authorization içindir.
-
-Kullanıcı girişi için OpenID Connect kullanılmalıdır.
+OAuth, temel olarak authorization içindir. Kullanıcı girişi için OpenID Connect kullanılmalıdır.
 
 ---
 
@@ -1910,9 +1651,7 @@ Riskli istek:
 }
 ```
 
-Kayıt sırasında rol istemcinin gönderdiği değerden alınmamalıdır.
-
-Varsayılan rol sunucu tarafından belirlenmelidir:
+Kayıt sırasında rol istemcinin gönderdiği değerden alınmamalıdır. Varsayılan rol sunucu tarafından belirlenmelidir:
 
 ```javascript
 const role = "user";
@@ -1934,9 +1673,7 @@ yerine geçmez.
 
 ## 14.8. Hataları Kullanıcıya Ayrıntılı Göstermek
 
-Stack trace, SQL hatası, dosya yolu veya kullanılan framework sürümü saldırgana bilgi verebilir.
-
-Kullanıcıya genel hata gösterilmeli, ayrıntılar güvenli loglarda tutulmalıdır.
+Stack trace, SQL hatası, dosya yolu veya kullanılan framework sürümü saldırgana bilgi verebilir. Kullanıcıya genel hata gösterilmeli, ayrıntılar güvenli loglarda tutulmalıdır.
 
 ---
 
@@ -1954,25 +1691,19 @@ Gizli bilgiler:
 * Secret manager
 * Güvenli deployment yapılandırması
 
-üzerinden yönetilmelidir.
-
-Ancak environment variable kullanmak tek başına yeterli değildir. Production ortamında erişimler ve loglar da korunmalıdır.
+üzerinden yönetilmelidir. Ancak environment variable kullanmak tek başına yeterli değildir. Production ortamında erişimler ve loglar da korunmalıdır.
 
 ---
 
 ## 14.10. Her Kullanıcıya Fazla Yetki Vermek
 
-Bütün kullanıcıların admin olması geliştirme sürecini kolaylaştırabilir fakat ciddi güvenlik riski oluşturur.
-
-Least privilege ilkesi uygulanmalıdır.
+Bütün kullanıcıların admin olması geliştirme sürecini kolaylaştırabilir fakat ciddi güvenlik riski oluşturur. Least privilege ilkesi uygulanmalıdır.
 
 ---
 
 ## 14.11. Logout İşleminde Yalnızca Arayüzü Değiştirmek
 
-Kullanıcıyı login sayfasına yönlendirmek gerçek logout değildir.
-
-Gerekli durumda:
+Kullanıcıyı login sayfasına yönlendirmek gerçek logout değildir. Gerekli durumda:
 
 * Session sunucuda silinmeli,
 * Cookie temizlenmeli,
