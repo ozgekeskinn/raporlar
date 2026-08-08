@@ -1,6 +1,4 @@
-# HTTP ve Web Derinliği
-
----
+# 14. Hafta Raporu: HTTP ve Web Derinliği
 
 ## İçindekiler
 
@@ -98,9 +96,11 @@
 25. [Sık Yapılan Hatalar](#sik-yapilan-hatalar)
 26. [Mülakat Soruları ve Kısa Cevaplar](#mulakat-sorulari-ve-kisa-cevaplar)
 27. [Genel Sonuç](#genel-sonuc)
+28. [Kaynakça](#kaynakca)
 
 ---
 
+<a id="giris"></a>
 ## 1. Giriş
 
 Modern web uygulamalarında kullanıcı arayüzü ile sunucu tarafı birbirinden ayrı katmanlar halinde çalışır. Kullanıcı bir butona bastığında, giriş formunu gönderdiğinde, ürün listesini açtığında veya bir dosya yüklediğinde arka planda çoğunlukla bir **HTTP isteği** oluşturulur. Bu istek ağ üzerinden backend sunucusuna gider. Backend isteği işler, veri tabanına erişebilir, çeşitli kontroller yapabilir ve sonucunda bir **HTTP cevabı** döndürür. Bu nedenle HTTP yalnızca tarayıcıya web sayfası getiren basit bir protokol değildir. HTTP;
@@ -116,6 +116,7 @@ HTTP'yi anlamadan yalnızca `fetch()` veya Axios kullanmayı öğrenmek mümkün
 
 ---
 
+<a id="web-uygulamalarinda-iletisimin-genel-yapisi"></a>
 ## 2. Web Uygulamalarında İletişimin Genel Yapısı
 
 Bir web uygulamasının temel iletişim modeli şu şekilde gösterilebilir:
@@ -174,6 +175,7 @@ E-posta zaten kayıtlı: 409 Conflict
 
 ---
 
+<a id="http-nedir"></a>
 ## 3. HTTP Nedir?
 
 **HTTP**, “Hypertext Transfer Protocol” ifadesinin kısaltmasıdır. Türkçeye “Hiper Metin Aktarım Protokolü” olarak çevrilebilir. HTTP, istemciler ile sunucular arasında kaynakların istenmesi ve cevapların iletilmesi için kullanılan uygulama katmanı protokolüdür. HTTP'nin temel çalışma biçimi **request–response**, yani **istek–cevap** modelidir:
@@ -185,6 +187,7 @@ Client  <── HTTP Response ───  Server
 
 İstemci bir kaynağı ister veya bir işlem talep eder. Sunucu bu isteği değerlendirir ve bir cevap üretir.
 
+<a id="httpnin-temel-ozellikleri"></a>
 ### 3.1. HTTP'nin Temel Özellikleri
 
 #### İstemci–sunucu mimarisine dayanır
@@ -217,6 +220,7 @@ HTTP ile erişilen her şey bir kaynak olarak düşünülebilir:
 
 İstemci ne yapmak istediğini HTTP metodu ile, sunucu ise işlemin sonucunu status code ile ifade eder.
 
+<a id="istemci-ve-sunucu-kavramlari"></a>
 ### 3.2. İstemci ve Sunucu Kavramları
 
 **İstemci**, HTTP isteğini başlatan yazılımdır. Örnekler:
@@ -241,6 +245,7 @@ HTTP ile erişilen her şey bir kaynak olarak düşünülebilir:
 
 Bir uygulama bazı işlemlerde istemci, bazı işlemlerde sunucu olabilir. Örneğin bir backend, ödeme servisine istek gönderdiğinde ödeme servisine göre istemci konumundadır.
 
+<a id="kaynak-ve-temsil-kavramlari"></a>
 ### 3.3. Kaynak ve Temsil Kavramları
 
 HTTP'de **resource**, erişilmek istenen mantıksal varlıktır. **Representation** ise bu kaynağın ağ üzerinden gönderilen gösterimidir. Örneğin `/api/users/15` adresi 15 numaralı kullanıcı kaynağını ifade edebilir. Bu kaynağın temsili JSON olabilir:
@@ -265,6 +270,7 @@ Aynı kaynak farklı temsil biçimlerinde gönderilebilir:
 
 ---
 
+<a id="bir-http-isteginin-yasam-dongusu"></a>
 ## 4. Bir HTTP İsteğinin Yaşam Döngüsü
 
 Kullanıcının tarayıcıya bir adres yazmasıyla sunucudan cevap alınması arasında birçok adım gerçekleşir.
@@ -337,10 +343,12 @@ Frontend:
 
 ---
 
+<a id="url-ve-uri-yapisi"></a>
 ## 5. URL ve URI Yapısı
 
 **URI**, bir kaynağı tanımlayan genel ifadedir. **URL** ise kaynağın nerede bulunduğunu ve ona nasıl erişileceğini belirten URI türüdür. Günlük web geliştirmede çoğunlukla URL terimi kullanılır.
 
+<a id="url-bolumleri"></a>
 ### 5.1. URL Bölümleri
 
 Aşağıdaki URL'yi inceleyelim:
@@ -366,6 +374,7 @@ Varsayılan portlar:
 
 Port varsayılan olduğunda URL içinde yazılması gerekmez.
 
+<a id="path-parameter-ve-query-parameter"></a>
 ### 5.2. Path Parameter ve Query Parameter
 
 #### Path parameter
@@ -416,6 +425,7 @@ const value = encodeURIComponent("Özge Keskin");
 
 ---
 
+<a id="http-request-yapisi"></a>
 ## 6. HTTP Request Yapısı
 
 HTTP request, istemcinin sunucuya gönderdiği mesajdır. HTTP/1.1 açısından bir request genel olarak şu bölümlerden oluşur:
@@ -443,6 +453,7 @@ Content-Length: 67
 }
 ```
 
+<a id="request-line"></a>
 ### 6.1. Request Line
 
 Request line üç temel parçadan oluşur:
@@ -463,11 +474,10 @@ GET /api/products?page=1 HTTP/1.1
 
 HTTP/2 ve HTTP/3 ağ üzerinde farklı binary framing mekanizmaları kullanır. Ancak geliştiricinin gördüğü mantıksal semantik yine method, URL, header ve body kavramlarından oluşur.
 
+<a id="http-metotlari"></a>
 ### 6.2. HTTP Metotları
 
-HTTP method, istemcinin hedef kaynak üzerinde gerçekleştirmek istediği işlemi açıklar.
-
-En sık kullanılan metotlar:
+HTTP method, istemcinin hedef kaynak üzerinde gerçekleştirmek istediği işlemi açıklar. En sık kullanılan metotlar:
 
 | Method | Temel amaç |
 |---|---|
@@ -479,6 +489,7 @@ En sık kullanılan metotlar:
 | `HEAD` | Body olmadan yalnızca response metadata almak |
 | `OPTIONS` | Desteklenen iletişim seçeneklerini öğrenmek |
 
+<a id="request-headers"></a>
 ### 6.3. Request Headers
 
 Header'lar, istekle ilgili ek bilgileri taşır. Header adı ve değeri iki nokta ile ayrılır:
@@ -573,6 +584,7 @@ Cache doğrulaması için ETag değerini gönderir:
 If-None-Match: "product-list-v18"
 ```
 
+<a id="bos-satir"></a>
 ### 6.4. Boş Satır
 
 HTTP/1.1 mesajında header bölümünün bittiğini bir boş satır belirtir. Bu satırdan sonra body başlayabilir.
@@ -586,6 +598,7 @@ Content-Length: 18
 
 Header ile body arasındaki ayrımın doğru yapılması mesajın doğru parse edilmesi açısından kritiktir.
 
+<a id="request-body"></a>
 ### 6.5. Request Body
 
 Request body, sunucuya gönderilen asıl veriyi taşır. Her istekte body bulunmak zorunda değildir. Body yaygın olarak şu metotlarla gönderilir:
@@ -606,6 +619,7 @@ GET isteklerinde body kullanımı birçok istemci, proxy, cache ve framework tar
 
 Dosya yükleme için `multipart/form-data`, klasik HTML formları için `application/x-www-form-urlencoded` kullanılabilir.
 
+<a id="tam-bir-request-ornegi"></a>
 ### 6.6. Tam Bir Request Örneği
 
 ```http
@@ -631,13 +645,14 @@ Bu isteğin anlamı:
 - İstemci JSON cevap bekliyor.
 - İstek `https://app.example.com` origin'inden başlatılmış.
 
-
 ---
 
+<a id="http-metotlari-derinlemesine"></a>
 ## 7. HTTP Metotları Derinlemesine
 
 HTTP metotlarını yalnızca CRUD eşleştirmesi olarak ezberlemek yeterli değildir. Her metodun **semantiği**, **güvenli olup olmadığı**, **idempotent olup olmadığı** ve **cache davranışı** önemlidir.
 
+<a id="get"></a>
 ### 7.1. GET
 
 GET, hedef kaynağın mevcut temsilini almak için kullanılır.
@@ -669,6 +684,7 @@ GET /api/users/15/delete
 
 GET ile silme işlemi yapılmamalıdır. Tarayıcı ön yükleme, crawler, cache veya link önizleme sistemi bu URL'yi istemeden çağırabilir.
 
+<a id="post"></a>
 ### 7.2. POST
 
 POST, hedef kaynağın istekteki içeriği kendi kurallarına göre işlemesini ister. Genellikle yeni kaynak oluşturmak veya bir işlem başlatmak için kullanılır.
@@ -692,9 +708,7 @@ Yaygın kullanım alanları:
 - Arama veya raporlama işlemi başlatma
 - E-posta gönderme
 
-POST varsayılan olarak idempotent değildir. Aynı istek iki kez gönderildiğinde iki farklı kayıt oluşturulabilir.
-
-Örneğin:
+POST varsayılan olarak idempotent değildir. Aynı istek iki kez gönderildiğinde iki farklı kayıt oluşturulabilir. Örneğin:
 
 ```http
 POST /api/orders
@@ -707,6 +721,7 @@ HTTP/1.1 201 Created
 Location: /api/users/124
 ```
 
+<a id="put"></a>
 ### 7.3. PUT
 
 PUT, hedef kaynağın temsilini request body ile oluşturmak veya tamamen değiştirmek için kullanılır.
@@ -722,10 +737,9 @@ Content-Type: application/json
 }
 ```
 
-PUT idempotent kabul edilir. Aynı PUT isteği birden fazla kez gönderildiğinde ortaya çıkan nihai durum aynı olmalıdır. 
+PUT idempotent kabul edilir. Aynı PUT isteği birden fazla kez gönderildiğinde ortaya çıkan nihai durum aynı olmalıdır. PUT çoğunlukla kaynağın tamamının temsilini gönderme anlamında kullanılır. Ancak gerçek projelerde framework ve API sözleşmelerine göre davranış değişebilir. API dokümantasyonu açık olmalıdır.
 
-PUT çoğunlukla kaynağın tamamının temsilini gönderme anlamında kullanılır. Ancak gerçek projelerde framework ve API sözleşmelerine göre davranış değişebilir. API dokümantasyonu açık olmalıdır.
-
+<a id="patch"></a>
 ### 7.4. PATCH
 
 PATCH, kaynağın belirli bölümlerini güncellemek için kullanılır.
@@ -739,9 +753,7 @@ Content-Type: application/json
 }
 ```
 
-Bu istekte yalnızca e-posta alanı değiştirilmektedir.
-
-PUT ve PATCH farkı özetle:
+Bu istekte yalnızca e-posta alanı değiştirilmektedir. PUT ve PATCH farkı özetle:
 
 | PUT | PATCH |
 |---|---|
@@ -767,6 +779,7 @@ JSON Patch örneği:
 ]
 ```
 
+<a id="delete"></a>
 ### 7.5. DELETE
 
 DELETE hedef kaynağın silinmesini ister.
@@ -792,10 +805,9 @@ Content-Type: application/json
 }
 ```
 
-DELETE idempotent kabul edilir. İlk istek kaynağı siler. İkinci istek `404 Not Found` dönebilir; ancak sunucunun nihai durumu yine kaynağın bulunmaması olduğu için işlem semantiği idempotenttir.
+DELETE idempotent kabul edilir. İlk istek kaynağı siler. İkinci istek `404 Not Found` dönebilir; ancak sunucunun nihai durumu yine kaynağın bulunmaması olduğu için işlem semantiği idempotenttir. Soft delete kullanan sistemlerde kayıt fiziksel olarak silinmek yerine `isDeleted`, `deletedAt` veya `status` alanı güncellenebilir.
 
-Soft delete kullanan sistemlerde kayıt fiziksel olarak silinmek yerine `isDeleted`, `deletedAt` veya `status` alanı güncellenebilir.
-
+<a id="head"></a>
 ### 7.6. HEAD
 
 HEAD, GET ile aynı response header'larını istemek için kullanılır; ancak response body gönderilmez.
@@ -820,6 +832,7 @@ Content-Length: 348921
 ETag: "report-v4"
 ```
 
+<a id="options"></a>
 ### 7.7. OPTIONS
 
 OPTIONS, hedef kaynak veya sunucu için desteklenen iletişim seçeneklerini öğrenmekte kullanılır.
@@ -837,12 +850,12 @@ Allow: GET, POST, OPTIONS
 
 CORS preflight sürecinde tarayıcı otomatik olarak OPTIONS isteği gönderir.
 
+<a id="trace"></a>
 ### 7.8. TRACE
 
-TRACE, isteğin ara sistemlerden geçerken nasıl değiştiğini teşhis etmek amacıyla tasarlanmıştır. Güvenlik riskleri nedeniyle çoğu üretim sunucusunda kapatılır. 
+TRACE, isteğin ara sistemlerden geçerken nasıl değiştiğini teşhis etmek amacıyla tasarlanmıştır. Güvenlik riskleri nedeniyle çoğu üretim sunucusunda kapatılır. TRACE uygulama API'lerinde günlük geliştirme sırasında neredeyse hiç kullanılmaz.
 
-TRACE uygulama API'lerinde günlük geliştirme sırasında neredeyse hiç kullanılmaz.
-
+<a id="connect"></a>
 ### 7.9. CONNECT
 
 CONNECT, hedef sunucuya bir tünel oluşturmak için kullanılır. Özellikle HTTPS trafiğinin HTTP proxy üzerinden geçirilmesinde kullanılır. Örnek mantık:
@@ -853,6 +866,7 @@ Proxy → Client: Tünel oluşturuldu
 Client ↔ Server: Şifreli TLS trafiği
 ```
 
+<a id="query"></a>
 ### 7.10. QUERY
 
 `QUERY`, Haziran 2026'da RFC 10008 ile standartlaştırılan bir HTTP metodudur. Request body içinde sorgu verisi taşıyarak hedef kaynağın güvenli ve idempotent bir sorgu işlemi gerçekleştirmesini ifade eder.
@@ -877,6 +891,7 @@ QUERY metodunun hedefi, karmaşık sorgularda GET ve POST arasındaki semantik b
 
 Yeni bir standart olduğu için framework, proxy, firewall ve API araçlarının desteği zaman içinde yaygınlaşacaktır. Bu nedenle mevcut projelerde kullanılmadan önce altyapı uyumluluğu kontrol edilmelidir.
 
+<a id="safe-ve-idempotent-metotlar"></a>
 ### 7.11. Safe ve Idempotent Metotlar
 
 #### Safe method
@@ -911,6 +926,7 @@ Idempotency özellikle ağ hatalarında retry yapılırken önemlidir. İstemci 
 
 ---
 
+<a id="http-response-yapisi"></a>
 ## 8. HTTP Response Yapısı
 
 HTTP response, sunucunun istemciye gönderdiği cevaptır. HTTP/1.1 açısından genel yapı:
@@ -922,6 +938,7 @@ Boş Satır
 Opsiyonel Response Body
 ```
 
+<a id="status-line"></a>
 ### 8.1. Status Line
 
 Status line şu parçalardan oluşur:
@@ -942,6 +959,7 @@ HTTP/1.1 200 OK
 
 Uygulama mantığı sayısal koda dayanmalıdır. Reason phrase protokol sürümüne ve implementasyona göre bulunmayabilir.
 
+<a id="response-headers"></a>
 ### 8.2. Response Headers
 
 Response header'ları cevap hakkında metadata taşır. Yaygın örnekler:
@@ -956,6 +974,7 @@ ETag: "users-v12"
 Location: /api/users/124
 ```
 
+<a id="response-body"></a>
 ### 8.3. Response Body
 
 Response body, sunucunun istemciye gönderdiği asıl içeriği taşır. Örnek JSON body:
@@ -974,6 +993,7 @@ Her cevapta body olmaz. Örnekler:
 - HEAD cevabı
 - `304 Not Modified`
 
+<a id="tam-bir-response-ornegi"></a>
 ### 8.4. Tam Bir Response Örneği
 
 ```http
@@ -1000,6 +1020,7 @@ Bu cevabın anlamı:
 
 ---
 
+<a id="http-status-codelari"></a>
 ## 9. HTTP Status Code'ları
 
 HTTP status code, sunucunun isteği nasıl sonuçlandırdığını üç basamaklı bir sayı ile ifade eder. İlk rakam kategoriyi belirtir:
@@ -1014,6 +1035,7 @@ HTTP status code, sunucunun isteği nasıl sonuçlandırdığını üç basamakl
 
 Frontend yalnızca `200` ile `500` kodlarını bilmemelidir. Doğru status code, istemcinin doğru davranışı göstermesini sağlar.
 
+<a id="1xx-bilgilendirme-kodlari"></a>
 ### 9.1. 1xx Bilgilendirme Kodları
 
 #### 100 Continue
@@ -1047,6 +1069,7 @@ HTTP/1.1 103 Early Hints
 Link: </styles.css>; rel=preload; as=style
 ```
 
+<a id="2xx-basari-kodlari"></a>
 ### 9.2. 2xx Başarı Kodları
 
 #### 200 OK
@@ -1137,6 +1160,7 @@ Content-Range: bytes 0-999/5000
 
 Birden fazla alt işlemin farklı sonuçlarını tek cevapta ifade etmek için WebDAV tarafından tanımlanmıştır.
 
+<a id="3xx-yonlendirme-kodlari"></a>
 ### 9.3. 3xx Yönlendirme Kodları
 
 #### 300 Multiple Choices
@@ -1198,6 +1222,7 @@ Kalıcı yönlendirmedir ve orijinal HTTP metodunu/body'yi korur.
 | 307 | Geçici | Evet |
 | 308 | Kalıcı | Evet |
 
+<a id="4xx-istemci-hata-kodlari"></a>
 ### 9.4. 4xx İstemci Hata Kodları
 
 4xx kodları, isteğin mevcut hâliyle istemci tarafında düzeltme gerektirdiğini belirtir. Ancak hata yalnızca frontend kodundan kaynaklanmak zorunda değildir; URL, authentication, authorization veya gönderilen veri sorunu olabilir.
@@ -1322,7 +1347,9 @@ Sunucu `Content-Length` olmadan isteği kabul etmiyordur.
 
 #### 412 Precondition Failed
 
-`If-Match`, `If-Unmodified-Since` gibi koşullu request header'ları karşılanmamıştır. Optimistic concurrency kontrolünde kullanılabilir.
+`If-Match`, `If-Unmodified-Since` gibi koşullu request header'ları karşılanmamıştır.
+
+Optimistic concurrency kontrolünde kullanılabilir.
 
 #### 413 Content Too Large
 
@@ -1416,6 +1443,7 @@ Request header'ları çok büyüktür. Çok büyük cookie'ler veya aşırı say
 
 Kaynak hukuki nedenlerle sunulamıyordur.
 
+<a id="5xx-sunucu-hata-kodlari"></a>
 ### 9.5. 5xx Sunucu Hata Kodları
 
 5xx kodları, sunucunun geçerli görünen isteği işlerken başarısız olduğunu belirtir.
@@ -1498,6 +1526,7 @@ Sunucu işlemi gerçekleştirirken sonsuz döngü niteliğinde bir yönlendirme 
 
 Ağa erişmek için kimlik doğrulaması gerektiğini belirtir. Otel veya havaalanı Wi-Fi captive portal sistemlerinde görülebilir.
 
+<a id="sik-karistirilan-status-codelar"></a>
 ### 9.6. Sık Karıştırılan Status Code'lar
 
 #### 200 ve 201
@@ -1539,10 +1568,12 @@ Ağa erişmek için kimlik doğrulaması gerektiğini belirtir. Otel veya havaal
 
 ---
 
+<a id="http-headerlari-derinlemesine"></a>
 ## 10. HTTP Header'ları Derinlemesine
 
 HTTP header'ları request veya response hakkında kontrol bilgisi ve metadata taşır. Header adları teknik olarak case-insensitive'dir; yani `Content-Type` ve `content-type` aynı alanı ifade eder. Buna rağmen okunabilirlik için standart yazım biçimleri kullanılır.
 
+<a id="genel-headerlar"></a>
 ### 10.1. Genel Header'lar
 
 #### Date
@@ -1584,6 +1615,7 @@ X-Forwarded-Host: example.com
 
 Bu header'lara yalnızca güvenilir proxy tarafından ayarlanıyorsa güvenilmelidir. İstemci kendisi sahte değer gönderebilir.
 
+<a id="icerik-headerlari"></a>
 ### 10.2. İçerik Header'ları
 
 #### Content-Type
@@ -1634,11 +1666,12 @@ Partial content cevabında gönderilen byte aralığını belirtir.
 Content-Range: bytes 1000-1999/5000
 ```
 
+<a id="kimlik-dogrulama-headerlari"></a>
 ### 10.3. Kimlik Doğrulama Header'ları
 
 #### Authorization
 
-İstemci kimlik doğrulama bilgisini gönderir. Bearer token:
+İstemci kimlik doğrulama bilgisini gönderir.Bearer token:
 
 ```http
 Authorization: Bearer eyJhbGciOi...
@@ -1664,6 +1697,7 @@ WWW-Authenticate: Bearer realm="api"
 
 Proxy kimlik doğrulaması için kullanılır.
 
+<a id="cache-headerlari"></a>
 ### 10.4. Cache Header'ları
 
 - `Cache-Control`
@@ -1677,6 +1711,7 @@ Proxy kimlik doğrulaması için kullanılır.
 
 Bu header'lar gereksiz veri transferini azaltır ve uygulama performansını artırır.
 
+<a id="cors-headerlari"></a>
 ### 10.5. CORS Header'ları
 
 Request tarafında:
@@ -1694,6 +1729,7 @@ Response tarafında:
 - `Access-Control-Expose-Headers`
 - `Access-Control-Max-Age`
 
+<a id="guvenlik-headerlari"></a>
 ### 10.6. Güvenlik Header'ları
 
 #### Strict-Transport-Security
@@ -1748,10 +1784,12 @@ Permissions-Policy: camera=(), microphone=(), geolocation=(self)
 
 ---
 
+<a id="http-body-ve-veri-formatlari"></a>
 ## 11. HTTP Body ve Veri Formatları
 
 HTTP body farklı veri formatları taşıyabilir. Body'nin nasıl yorumlanacağını `Content-Type` belirler.
 
+<a id="json"></a>
 ### 11.1. JSON
 
 Modern web API'lerinde en yaygın formattır.
@@ -1788,6 +1826,7 @@ Dikkat edilmesi gerekenler:
 }
 ```
 
+<a id="form-url-encoded"></a>
 ### 11.2. Form URL Encoded
 
 Klasik HTML form gönderimlerinde kullanılır.
@@ -1804,6 +1843,7 @@ name=%C3%96zge+Keskin&email=ozge%40example.com
 
 Alanlar `&`, anahtar ve değer `=` ile ayrılır.
 
+<a id="multipart-form-data"></a>
 ### 11.3. Multipart Form Data
 
 Dosya ve form alanlarını aynı request içinde göndermek için kullanılır.
@@ -1838,6 +1878,7 @@ await fetch("/api/files", {
 });
 ```
 
+<a id="text-html-xml-ve-binary-icerikler"></a>
 ### 11.4. Text, HTML, XML ve Binary İçerikler
 
 Yaygın media type örnekleri:
@@ -1860,6 +1901,7 @@ Yaygın media type örnekleri:
 
 ---
 
+<a id="content-type-ve-accept-farki"></a>
 ## 12. Content-Type ve Accept Farkı
 
 Bu iki header sık karıştırılır.
@@ -1912,6 +1954,7 @@ Bu isteğin anlamı:
 
 ---
 
+<a id="stateless-yapi-cookie-ve-session"></a>
 ## 13. Stateless Yapı, Cookie ve Session
 
 HTTP stateless olduğu için sunucu, iki isteğin aynı kullanıcıdan geldiğini kendiliğinden bilemez.
@@ -1923,6 +1966,7 @@ HTTP stateless olduğu için sunucu, iki isteğin aynı kullanıcıdan geldiğin
 
 Bu iki isteği aynı kullanıcıyla ilişkilendirmek için ek mekanizmalar gerekir.
 
+<a id="cookie"></a>
 ### 13.1. Cookie
 
 Cookie, tarayıcının bir domain için sakladığı küçük veri parçalarıdır. Sunucu response içinde `Set-Cookie` gönderir:
@@ -1967,6 +2011,7 @@ Cookie'nin hangi domain veya alt domainlerde geçerli olacağını belirler.
 
 Cookie'nin yaşam süresini belirler.
 
+<a id="session"></a>
 ### 13.2. Session
 
 Session tabanlı authentication süreci:
@@ -1986,6 +2031,7 @@ abc123 → userId: 15, role: admin
 
 Session verisi sunucu belleğinde, veri tabanında veya Redis gibi bir sistemde tutulabilir.
 
+<a id="token-tabanli-kimlik-dogrulama"></a>
 ### 13.3. Token Tabanlı Kimlik Doğrulama
 
 Token tabanlı sistemlerde istemci access token alır ve isteklerde gönderir:
@@ -2006,13 +2052,10 @@ Token'ın nerede saklanacağı güvenlik kararıdır. LocalStorage erişilebilir
 
 ---
 
+<a id="cors-nedir"></a>
 ## 14. CORS Nedir?
 
-**CORS**, “Cross-Origin Resource Sharing” ifadesinin kısaltmasıdır. Türkçesi “Kaynaklar Arası Kaynak Paylaşımı” olarak ifade edilebilir.
-
-CORS, bir web sayfasının kendi origin'inden farklı bir origin'deki kaynağa JavaScript aracılığıyla erişip erişemeyeceğini kontrol eden HTTP tabanlı tarayıcı mekanizmasıdır.
-
-Örnek:
+**CORS**, “Cross-Origin Resource Sharing” ifadesinin kısaltmasıdır. Türkçesi “Kaynaklar Arası Kaynak Paylaşımı” olarak ifade edilebilir. CORS, bir web sayfasının kendi origin'inden farklı bir origin'deki kaynağa JavaScript aracılığıyla erişip erişemeyeceğini kontrol eden HTTP tabanlı tarayıcı mekanizmasıdır. Örnek:
 
 ```text
 Frontend: http://localhost:5173
@@ -2021,6 +2064,7 @@ Backend:  http://localhost:3000
 
 Portlar farklı olduğu için bu iki adres farklı origin'dir. React uygulaması backend'e `fetch()` isteği gönderdiğinde tarayıcı CORS kurallarını uygular.
 
+<a id="same-origin-policy"></a>
 ### 14.1. Same-Origin Policy
 
 **Same-Origin Policy**, tarayıcıların uyguladığı temel güvenlik politikasıdır. Bir origin'den çalışan script'in başka bir origin'deki hassas verilere sınırsız erişmesini engeller. Bu politika olmasaydı şu saldırı mümkün olurdu:
@@ -2032,6 +2076,7 @@ Portlar farklı olduğu için bu iki adres farklı origin'dir. React uygulaması
 
 Same-Origin Policy, origin'ler arası JavaScript erişimini varsayılan olarak sınırlar. CORS ise sunucunun belirli origin'lere kontrollü biçimde izin vermesini sağlar.
 
+<a id="origin-nedir"></a>
 ### 14.2. Origin Nedir?
 
 Origin üç parçadan oluşur:
@@ -2058,6 +2103,7 @@ Aşağıdaki karşılaştırmalar önemlidir:
 
 Path origin hesabına dahil değildir.
 
+<a id="cross-origin-istek-nedir"></a>
 ### 14.3. Cross-Origin İstek Nedir?
 
 Bir sayfa kendi origin'inden farklı scheme, host veya porttaki kaynağa istek gönderiyorsa bu cross-origin istektir.
@@ -2079,10 +2125,11 @@ Backend izin veriyorsa response içinde şunu gönderir:
 Access-Control-Allow-Origin: http://localhost:5173
 ```
 
-Tarayıcı bu header'ı kontrol eder. Uygun değilse cevap ağ seviyesinde gelmiş olsa bile JavaScript'in response'u okumasını engeller.
+Tarayıcı bu header'ı kontrol eder. Uygun değilse cevap ağ seviyesinde gelmiş olsa bile JavaScript'in response'u okumasını engeller. 
 
 CORS kontrolünü sunucudan çok **tarayıcı uygular**. Postman veya backend-to-backend isteklerde tarayıcı Same-Origin Policy olmadığı için aynı CORS davranışı görülmeyebilir.
 
+<a id="basit-cors-istekleri"></a>
 ### 14.4. Basit CORS İstekleri
 
 Bazı cross-origin istekler doğrudan gönderilir. Bunlara günlük anlatımda “simple request” denir. Genel olarak basit istek olabilmesi için:
@@ -2102,6 +2149,7 @@ fetch("https://api.example.com/public-news");
 
 Tarayıcı isteği doğrudan gönderir. Sunucu response içinde uygun `Access-Control-Allow-Origin` header'ını döndürmezse frontend response'a erişemez. Basit olması isteğin güvenli veya authentication gerektirmeyen bir işlem olduğu anlamına gelmez. “Simple request” yalnızca CORS protokolündeki teknik sınıflandırmadır.
 
+<a id="preflight-istekleri"></a>
 ### 14.5. Preflight İstekleri
 
 Bazı cross-origin isteklerden önce tarayıcı gerçek isteği göndermeden sunucuya otomatik `OPTIONS` isteği yollar. Buna **preflight request** denir. Preflight'ın amacı:
@@ -2150,6 +2198,7 @@ Access-Control-Max-Age: 600
 
 Bunun ardından tarayıcı gerçek PATCH isteğini gönderir. Preflight başarısız olursa gerçek istek gönderilmez.
 
+<a id="cors-response-headerlari"></a>
 ### 14.6. CORS Response Header'ları
 
 #### Access-Control-Allow-Origin
@@ -2235,6 +2284,7 @@ Access-Control-Max-Age: 600
 
 Bu sayede her gerçek istekten önce tekrar OPTIONS gönderilmesi azaltılabilir. Tarayıcıların uyguladığı üst sınırlar değişebilir.
 
+<a id="credentials-kullanimi"></a>
 ### 14.7. Credentials Kullanımı
 
 Cookie tabanlı cross-origin isteklerde frontend açıkça credentials göndermelidir. Fetch:
@@ -2275,6 +2325,7 @@ Set-Cookie: sessionId=abc123; HttpOnly; Secure; SameSite=None
 
 CORS doğru olsa bile `SameSite`, `Secure`, domain veya third-party cookie politikaları nedeniyle cookie gönderilmeyebilir.
 
+<a id="cors-hatalari-ve-cozumleri"></a>
 ### 14.8. CORS Hataları ve Çözümleri
 
 Yaygın tarayıcı hatası:
@@ -2367,6 +2418,7 @@ fetch("/api/products");
 
 Tarayıcı isteği frontend development server'a yapar; Vite proxy isteği backend'e aktarır. Bu geliştirme kolaylığıdır. Üretimde doğru reverse proxy ve CORS tasarımı yine yapılmalıdır.
 
+<a id="no-cors-yanilgisi"></a>
 ### 14.9. no-cors Yanılgısı
 
 Bazı geliştiriciler CORS hatasını çözmek için şunu ekler:
@@ -2390,6 +2442,7 @@ console.log(response.type); // "opaque"
 
 CORS problemi frontend'den “kapatılmaz”. İzin, isteğin ulaştığı sunucu tarafından doğru response header'larıyla verilmelidir.
 
+<a id="cors-bir-guvenlik-mekanizmasi-midir"></a>
 ### 14.10. CORS Bir Güvenlik Mekanizması mıdır?
 
 CORS bir **erişim yetkilendirme sistemi** değildir. CORS, tarayıcının cross-origin response'u JavaScript'e açıp açmayacağını kontrol eder. CORS şunların yerine geçmez:
@@ -2406,6 +2459,7 @@ Bir API'ye `Access-Control-Allow-Origin: *` eklemek API'yi internete açan tek �
 
 ---
 
+<a id="cors-csrf-ve-authentication-arasindaki-fark"></a>
 ## 15. CORS, CSRF ve Authentication Arasındaki Fark
 
 Bu üç kavram birbirinden farklıdır.
@@ -2463,6 +2517,7 @@ CORS response'un okunmasını engelleyebilir; ancak bazı cross-origin istekleri
 
 ---
 
+<a id="https-ve-tls"></a>
 ## 16. HTTPS ve TLS
 
 **HTTPS**, HTTP iletişiminin TLS üzerinden güvenli biçimde yapılmasıdır.
@@ -2511,10 +2566,12 @@ Tarayıcı güvenlik nedeniyle bu isteği engelleyebilir. Üretimde tüm kaynakl
 
 ---
 
+<a id="http-surumleri"></a>
 ## 17. HTTP Sürümleri
 
 HTTP sürümleri temel semantiği korurken taşıma ve performans mekanizmalarını geliştirir. GET, POST, status code ve header kavramları sürümler arasında büyük ölçüde aynı kalır.
 
+<a id="http10"></a>
 ### 17.1. HTTP/1.0
 
 HTTP/1.0 döneminde her istek için ayrı TCP bağlantısı açılması yaygındı:
@@ -2526,6 +2583,7 @@ TCP bağlantısı → Request 2 → Response 2 → Bağlantı kapanır
 
 Bu durum çok sayıda kaynağı olan web sayfalarında bağlantı kurma maliyetini artırır.
 
+<a id="http11"></a>
 ### 17.2. HTTP/1.1
 
 HTTP/1.1 kalıcı bağlantıları yaygınlaştırdı.
@@ -2546,10 +2604,9 @@ Tek TCP bağlantısı
 - Range requests
 - Gelişmiş method ve status code semantiği
 
-HTTP/1.1 mesajları start line, header satırları, boş satır ve opsiyonel body şeklinde metinsel yapıya sahiptir.
+HTTP/1.1 mesajları start line, header satırları, boş satır ve opsiyonel body şeklinde metinsel yapıya sahiptir. HTTP/1.1 pipelining teorik olarak birden fazla isteği beklemeden gönderebilir; ancak cevap sırası ve head-of-line blocking sorunları nedeniyle yaygın kullanılmamıştır. Tarayıcılar paralellik için genellikle birden fazla TCP bağlantısı açmıştır.
 
-HTTP/1.1 pipelining teorik olarak birden fazla isteği beklemeden gönderebilir; ancak cevap sırası ve head-of-line blocking sorunları nedeniyle yaygın kullanılmamıştır. Tarayıcılar paralellik için genellikle birden fazla TCP bağlantısı açmıştır.
-
+<a id="http2"></a>
 ### 17.3. HTTP/2
 
 HTTP/2, HTTP semantiğini değiştirmek yerine ağ üzerindeki ifade biçimini optimize eder. Önemli özellikler:
@@ -2578,6 +2635,7 @@ Tekrarlayan header'lar HPACK ile sıkıştırılır.
 
 Connection ve stream seviyesinde veri akışı kontrol edilir. HTTP/2 uygulama seviyesindeki head-of-line blocking sorununu azaltır; ancak tüm stream'ler aynı TCP bağlantısını kullandığı için TCP paket kaybı bağlantıdaki diğer stream'leri de geçici olarak etkileyebilir.
 
+<a id="http3"></a>
 ### 17.4. HTTP/3
 
 HTTP/3, HTTP semantiğini QUIC taşıma protokolü üzerinde çalıştırır. Temel özellikler:
@@ -2604,6 +2662,7 @@ Geliştirici çoğunlukla `fetch()` kodunu HTTP sürümüne göre değiştirmez.
 
 ---
 
+<a id="http-cache-mekanizmasi"></a>
 ## 18. HTTP Cache Mekanizması
 
 HTTP cache, aynı kaynağın gereksiz yere tekrar indirilmesini azaltır. Cache türleri:
@@ -2621,6 +2680,7 @@ Cache faydaları:
 - Backend yükünün azalması
 - Kullanıcı deneyiminin iyileşmesi
 
+<a id="freshness-ve-validation"></a>
 ### 18.1. Freshness ve Validation
 
 #### Fresh response
@@ -2635,6 +2695,7 @@ Cevabın tazelik süresi dolmuştur. Tekrar kullanılmadan önce doğrulama gere
 
 İstemci sunucuya cache'deki kopyanın hâlâ geçerli olup olmadığını sorar.
 
+<a id="cache-control-direktifleri"></a>
 ### 18.2. Cache-Control Direktifleri
 
 #### max-age
@@ -2659,9 +2720,7 @@ Cache-Control: private, max-age=300
 
 #### no-cache
 
-Cevabın saklanabileceğini; ancak tekrar kullanılmadan önce sunucuyla doğrulanması gerektiğini belirtir.
-
-`no-cache`, “hiç saklama” anlamına gelmez.
+Cevabın saklanabileceğini; ancak tekrar kullanılmadan önce sunucuyla doğrulanması gerektiğini belirtir. `no-cache`, “hiç saklama” anlamına gelmez.
 
 #### no-store
 
@@ -2691,6 +2750,7 @@ app.a83f1c.js
 
 Dosya değiştiğinde adı/hash'i değişeceği için uzun süre cache edilebilir.
 
+<a id="etag-ve-if-none-match"></a>
 ### 18.3. ETag ve If-None-Match
 
 Sunucu kaynağın sürümünü temsil eden ETag döndürür:
@@ -2720,6 +2780,7 @@ If-Match: "product-15-v7"
 
 Başka biri kaynağı değiştirmişse ETag artık eşleşmez ve sunucu `412 Precondition Failed` dönebilir.
 
+<a id="last-modified-ve-if-modified-since"></a>
 ### 18.4. Last-Modified ve If-Modified-Since
 
 Sunucu:
@@ -2748,6 +2809,7 @@ Vary: Accept-Encoding, Origin
 
 ---
 
+<a id="content-negotiation-ve-compression"></a>
 ## 19. Content Negotiation ve Compression
 
 Content negotiation, istemci ve sunucunun uygun temsil üzerinde anlaşmasıdır.
@@ -2815,8 +2877,10 @@ JPEG, PNG, MP4 veya ZIP gibi zaten sıkıştırılmış içeriklerde ek kazanç 
 
 ---
 
+<a id="frontend-backend-iletisim-ornekleri"></a>
 ## 20. Frontend–Backend İletişim Örnekleri
 
+<a id="get-istegi-ornegi"></a>
 ### 20.1. GET İsteği
 
 Frontend:
@@ -2833,9 +2897,7 @@ async function getProducts() {
 }
 ```
 
-`response.ok`, status code `200–299` aralığındaysa `true` olur. 
-
-Backend response:
+`response.ok`, status code `200–299` aralığındaysa `true` olur. Backend response:
 
 ```http
 HTTP/1.1 200 OK
@@ -2857,6 +2919,7 @@ Content-Type: application/json
 
 Önemli nokta: `fetch()` 404 veya 500 cevabında otomatik olarak promise rejection oluşturmaz. Ağ hatası dışında response gelir ve status code ayrıca kontrol edilmelidir.
 
+<a id="post-istegi-ornegi"></a>
 ### 20.2. POST İsteği
 
 Frontend:
@@ -2905,6 +2968,7 @@ Location: /products/73
 }
 ```
 
+<a id="login-akisi"></a>
 ### 20.3. Login Akışı
 
 #### Adım 1: Login request
@@ -3001,6 +3065,7 @@ Güvenlik için login cevabında “Bu e-posta sistemde yok” ve “Şifre yanl
 }
 ```
 
+<a id="dosya-yukleme"></a>
 ### 20.4. Dosya Yükleme
 
 Frontend:
@@ -3041,6 +3106,7 @@ Yalnızca frontend dosya uzantısı kontrolüne güvenilmemelidir.
 
 ---
 
+<a id="rest-api-tasariminda-http-kullanimi"></a>
 ## 21. REST API Tasarımında HTTP Kullanımı
 
 REST, HTTP ile aynı şey değildir; ancak HTTP'nin kaynak, method, status code, header ve cache özelliklerinden yararlanan bir mimari yaklaşımdır.
@@ -3161,6 +3227,7 @@ Access-Control-Expose-Headers: X-Total-Count
 
 ---
 
+<a id="hata-yonetimi-ve-standart-api-cevabi"></a>
 ## 22. Hata Yönetimi ve Standart API Cevabı
 
 Frontend'in hataları kolay işleyebilmesi için backend tutarlı bir hata formatı döndürmelidir. Örnek standart hata cevabı:
@@ -3250,6 +3317,7 @@ Sistemde aynı anda çok sayıda istemcinin tekrar denemesini önlemek için jit
 
 ---
 
+<a id="tarayici-devtools-ile-http-inceleme"></a>
 ## 23. Tarayıcı DevTools ile HTTP İnceleme
 
 Chrome/Edge DevTools içindeki **Network** sekmesi HTTP sorunlarını anlamanın en önemli araçlarından biridir.
@@ -3354,6 +3422,7 @@ curl 'https://api.example.com/products/15' \
 
 ---
 
+<a id="http-guvenligi-acisindan-temel-noktalar"></a>
 ## 24. HTTP Güvenliği Açısından Temel Noktalar
 
 ### Her zaman HTTPS kullan
@@ -3454,6 +3523,7 @@ Proxy ve backend HTTP mesaj sınırlarını farklı yorumlarsa request smuggling
 
 ---
 
+<a id="sik-yapilan-hatalar"></a>
 ## 25. Sık Yapılan Hatalar
 
 ### 1. Her başarılı işlemde 200 dönmek
@@ -3543,6 +3613,7 @@ Sayfalama, filtreleme, alan seçimi, sıkıştırma ve streaming düşünülmeli
 
 ---
 
+<a id="mulakat-sorulari-ve-kisa-cevaplar"></a>
 ## 26. Mülakat Soruları ve Kısa Cevaplar
 
 ### 1. HTTP nedir?
@@ -3687,6 +3758,7 @@ Hayır. CORS tarayıcı response erişimini kontrol eder. Endpoint her durumda b
 
 ---
 
+<a id="genel-sonuc"></a>
 ## 27. Genel Sonuç
 
 HTTP, frontend ile backend arasındaki iletişimin temel dilidir. Bir frontend geliştiricisinin yalnızca API adresini çağırmayı değil, gönderilen isteğin ve alınan cevabın bütün parçalarını anlaması gerekir. Bu raporda ele alınan temel noktalar şunlardır:
@@ -3723,5 +3795,3 @@ Bu bilgiler kavrandığında geliştirici yalnızca “istek çalıştı mı?”
 - Hata frontend, backend, proxy, ağ veya tarayıcı politikasının hangi katmanında?
 
 Dolayısıyla HTTP bilgisi, frontend ve backend'in birbirinden kopuk iki alan olmadığını; aynı iletişim sözleşmesinin iki tarafı olduğunu anlamayı sağlar.
-
----
