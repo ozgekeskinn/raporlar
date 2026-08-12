@@ -1,4 +1,4 @@
-# 3) Ağ Temelleri (Networking)
+# 3. Ağ Temelleri (Networking)
 
 Bu raporda ağ temelleri kapsamında IP, Port, DNS, TCP, UDP kavramları; paket yapısının nasıl çalıştığı; ping, traceroute ve nslookup komutlarının ne işe yaradığı detaylı olarak incelenmiştir. Bu konular, bir yazılımın internet üzerinden nasıl haberleşme kurduğunu anlamak açısından temel öneme sahiptir.
 

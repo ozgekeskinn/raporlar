@@ -1,4 +1,4 @@
-# Veritabanı Mantığı ve SQL Temelleri
+# 7. Veritabanı Mantığı ve SQL Temelleri
 
 ## İçindekiler
 

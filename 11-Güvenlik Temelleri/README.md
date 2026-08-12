@@ -1,4 +1,4 @@
-# 11. Hafta Raporu: Güvenlik Temelleri — Security Basics
+# 11. Güvenlik Temelleri — Security Basics
 
 ## İçindekiler
 

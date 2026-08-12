@@ -1,4 +1,4 @@
-# 8) Yazılım Mimarisi Temelleri
+# 8. Yazılım Mimarisi Temelleri
 
 Yazılım mimarisi, bir uygulamanın sadece “kod yazılmış hali” değil; o kodların **nasıl organize edildiğini**, parçaların **birbiriyle nasıl konuştuğunu**, verinin **nereden gelip nereye gittiğini**, sistemin **nasıl büyütülebileceğini**, **nasıl test edileceğini** ve **nasıl sürdürülebilir kalacağını** belirleyen genel yapıdır. Yani mimari, projenin omurgasıdır. Bir projede küçükken her şeyi tek dosyaya yazmak kolay görünebilir. Ama proje büyüdükçe şu sorunlar başlar:
 

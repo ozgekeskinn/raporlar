@@ -1,6 +1,6 @@
-# Bilgisayar Bilimleri Temelleri ve Kod Yazma Sureci
+# 1. Bilgisayar Bilimleri Temelleri ve Kod Yazma Sureci
 
-## Giris
+## Giriş
 
 Bu raporda bilgisayar bilimlerinin temel kavramlarini, kendi deneyimim uzerinden yani bilgisayarda kod yazma surecine gore acikladim. Kod yazarken aslinda sadece metin yazmadigimi, arka planda bircok donanim ve yazilim bileseninin birlikte calistigini fark ettim.
 
@@ -8,7 +8,7 @@ VS Code gibi bir editor acip kod yazdigimda, kaydettigimde ve programi calistird
 
 ---
 
-## CPU (Merkezi Islem Birimi)
+## CPU (Merkezi İşlem Birimi)
 
 CPU, bilgisayarin en onemli parcalarindan biridir ve tum hesaplamalari gerceklestirir. Kod yazma surecinde CPU’nun rolu cok kritiktir.
 
@@ -75,7 +75,7 @@ Bu nedenle SSD kullanan bilgisayarlarda yazilim gelistirme sureci daha akici olu
 
 ---
 
-## Isletim Sistemi
+## İşletim Sistemi
 
 Isletim sistemi, kullanici ile donanim arasindaki koprudur. Kod yazma surecinde tum islemler aslinda isletim sistemi uzerinden gerceklesir.
 
@@ -97,7 +97,7 @@ Ornegin ayni anda hem tarayici hem editor hem de terminal kullanabiliyorsam, bu 
 
 ---
 
-## Kod Yazma Surecinde Bu Kavramlarin Birlikte Calismasi
+## Kod Yazma Sürecinde Bu Kavramların Birlikte Çalışması
 
 Bilgisayarda kod yazma sureci aslinda birden fazla bilesenin birlikte calismasini gerektirir.
 
@@ -121,7 +121,7 @@ Yani yazilim gelistirme sadece kod yazmak degil, ayni zamanda bu bilesenlerin bi
 
 ---
 
-## Sonuc
+## Sonuç
 
 Bu raporu hazirlarken bilgisayarda kod yazma surecinin aslinda ne kadar karmasik ama duzenli bir yapida ilerledigini daha iyi anladim.
 

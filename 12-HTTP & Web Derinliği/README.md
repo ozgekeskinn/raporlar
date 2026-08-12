@@ -1,4 +1,4 @@
-# 14. Hafta Raporu: HTTP ve Web Derinliği
+# 12. HTTP ve Web Derinliği
 
 ## İçindekiler
 

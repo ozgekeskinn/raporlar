@@ -1,4 +1,4 @@
-# 5. Hafta Raporu: Linux Temelleri
+# 5. Linux Temelleri
 ## Giriş
 
 Bu haftaki çalışmanın konusu **Linux temelleri**dir. Yazılım geliştirme sürecinde yalnızca programlama dillerini bilmek yeterli değildir. Bir yazılımcının kullandığı işletim sistemi altyapısını, komut satırı araçlarını, dosya izin mantığını, paket kurulum süreçlerini ve servis yönetimini de anlaması gerekir. Bu nedenle Linux temelleri, hem sistem bilgisi hem de günlük geliştirme süreçleri açısından oldukça önemlidir.

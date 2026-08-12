@@ -1,4 +1,4 @@
-# API Mantığı (REST & JSON Temelleri)
+# 6. API Mantığı (REST & JSON Temelleri)
 
 ## İçindekiler
 

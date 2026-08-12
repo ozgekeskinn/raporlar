@@ -1,4 +1,4 @@
-# 13. Hafta Raporu — Design Patterns (Tasarım Desenleri)
+# 13. Design Patterns (Tasarım Desenleri)
 
 ## İçindekiler
 

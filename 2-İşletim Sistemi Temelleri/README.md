@@ -1,4 +1,4 @@
-# İşletim Sistemi Temelleri (OS Basics)
+# 2. İşletim Sistemi Temelleri (OS Basics)
 
 Bu çalışma, işletim sistemi temellerini anlamak amacıyla hazırlanmıştır. İşletim sistemi; bilgisayarın donanımı ile kullanıcı tarafından çalıştırılan programlar arasında yer alan, kaynakları yöneten ve düzen sağlayan temel yazılımdır. Bu konuyu öğrenmek, yazılımın yalnızca koddan ibaret olmadığını; aynı zamanda bellek, işlemci, süreçler ve çekirdek gibi yapılar üzerinde çalıştığını anlamayı sağlar.
 

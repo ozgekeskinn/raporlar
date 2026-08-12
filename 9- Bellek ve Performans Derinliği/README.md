@@ -1,6 +1,4 @@
-# 11. Bellek ve Performans Derinliği
-
----
+# 9. Bellek ve Performans Derinliği
 
 ## İçindekiler
 

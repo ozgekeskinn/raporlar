@@ -1,4 +1,4 @@
-# 12) Concurrency & Parallel Programming
+# 12. Concurrency & Parallel Programming
 
 Concurrency ve parallel programming, bir yazılımın aynı anda birden fazla işle ilgilenebilmesini sağlayan programlama yaklaşımlarıdır. Özellikle çok çekirdekli işlemcilerde performansı artırmak, uzun süren işlemlerin uygulamayı dondurmasını önlemek ve ortak kaynakları güvenli biçimde kullanmak için önemlidir.
 

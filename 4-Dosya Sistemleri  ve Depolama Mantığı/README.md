@@ -1,4 +1,4 @@
-# 4) Dosya Sistemleri ve Depolama Mantığı
+# 4. Dosya Sistemleri ve Depolama Mantığı
 
 Bu raporda dosya sistemleri ve depolama mantığı kapsamında NTFS, ext4 ve APFS dosya sistemlerinin farkları; blok yapısı; HDD ve SSD çalışma prensipleri; veri okuma/yazma hızlarının nereden geldiği detaylı şekilde incelenmiştir.
 
